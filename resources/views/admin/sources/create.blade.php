@@ -25,9 +25,31 @@
             <div class="container-fluid">
                 <!-- Info boxes -->
                 <div class="row">
-                    <div class="col-1">
-                        <a href="" class="btn btn-block btn-success"></a>
+                    <div class="card card-primary col-4">
+                        <div class="card-header mt-3">
+                            <h3 class="card-title">Create source</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <!-- form start -->
+                        <form action="{{route('admin.sources.store')}}" method="POST">
+                            @csrf
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Source's name</label>
+                                    <input type="text" class="form-control" placeholder="Enter name" name="title">
+                                    @error('title')
+                                    <div class="text-danger mt-2">You have to fill this input</div>
+                                    @enderror
+                                </div>
+                            </div>
+                            <!-- /.card-body -->
+
+                            <div class="card-footer mb-3">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </form>
                     </div>
+
                 </div>
                 <!-- /.row -->
 

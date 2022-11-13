@@ -1,18 +1,19 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Sources;
+namespace App\Http\Controllers\Admin\Types;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\Sources\UpdateRequest;
+use App\Http\Requests\Admin\Types\UpdateRequest;
 use App\Models\Source;
+use App\Models\Type;
 
 class UpdateController extends Controller
 {
-    public function __invoke(UpdateRequest $request, Source $source)
+    public function __invoke(UpdateRequest $request, Type $type)
     {
         $data = $request->validated();
-        $source->update($data);
+        $type->update($data);
 
-        return redirect()->route('admin.sources.show', compact('source'));
+        return redirect()->route('admin.types.show', compact('type'));
     }
 }

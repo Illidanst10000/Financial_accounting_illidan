@@ -5,13 +5,14 @@ namespace App\Http\Controllers\Admin\Spendings;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Tag;
+use App\Service\SpendingService;
 
-class CreateController extends Controller
+class BaseController extends Controller
 {
-    public function __invoke()
+    public $service;
+
+    public function __construct(SpendingService $service)
     {
-        $categories = Category::all();
-        $tags = Tag::all();
-        return view('admin.spendings.create', compact('categories', 'tags'));
+        $this->service = $service;
     }
 }

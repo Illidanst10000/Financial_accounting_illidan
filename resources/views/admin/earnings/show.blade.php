@@ -8,7 +8,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Tags</h1>
+                        <h1 class="m-0">Earnings</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -39,8 +39,8 @@
                                     </tr>
 
                                     <tr>
-                                        <td>{{$tag->id}}</td>
-                                        <td>{{$tag->title}}</td>
+                                        <td>{{$earning->id}}</td>
+                                        <td>{{$earning->amount}}</td>
                                     </tr>
 
 

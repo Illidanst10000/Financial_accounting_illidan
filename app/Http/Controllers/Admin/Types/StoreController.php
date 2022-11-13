@@ -1,18 +1,19 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Sources;
+namespace App\Http\Controllers\Admin\Types;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\Sources\StoreRequest;
+use App\Http\Requests\Admin\Types\StoreRequest;
 use App\Models\Source;
+use App\Models\Type;
 
 class StoreController extends Controller
 {
     public function __invoke(StoreRequest $request)
     {
         $data = $request->validated();
-        Source::firstOrCreate($data);
+        Type::firstOrCreate($data);
 
-        return redirect()->route('admin.sources.index');
+        return redirect()->route('admin.types.index');
     }
 }

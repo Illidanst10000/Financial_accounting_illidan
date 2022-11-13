@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Sources;
+namespace App\Http\Controllers\Admin\Types;
 
 use App\Http\Controllers\Controller;
 
@@ -8,6 +8,6 @@ class CreateController extends Controller
 {
     public function __invoke()
     {
-        return view('admin.sources.create');
+        return view('admin.types.create');
     }
 }

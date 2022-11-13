@@ -1,18 +1,19 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Tags;
+namespace App\Http\Controllers\Admin\Spendings;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Source;
+use App\Models\Spending;
 use App\Models\Tag;
 use App\Models\Type;
 
-class IndexController extends Controller
+class IndexController extends BaseController
 {
     public function __invoke()
     {
-        $tags = Tag::all();
-        return view('admin.tags.index', compact('tags'));
+        $spendings = Spending::all();
+        return view('admin.spendings.index', compact('spendings'));
     }
 }

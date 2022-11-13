@@ -8,7 +8,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Sources</h1>
+                        <h1 class="m-0">Types</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -27,18 +27,18 @@
                 <div class="row">
                     <div class="card card-primary col-4">
                         <div class="card-header mt-3">
-                            <h3 class="card-title">Update source</h3>
+                            <h3 class="card-title">Update type</h3>
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form action="{{route('admin.sources.update', $source->id)}}" method="POST">
+                        <form action="{{route('admin.types.update', $type->id)}}" method="POST">
                             @csrf
                             @method('PATCH')
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Source's name</label>
+                                    <label for="exampleInputEmail1">Type's name</label>
                                     <input type="text" class="form-control" placeholder="Enter name" name="title"
-                                    value="{{$source->title}}">
+                                    value="{{$type->title}}">
                                     @error('title')
                                     <div class="text-danger mt-2">You have to fill this input</div>
                                     @enderror

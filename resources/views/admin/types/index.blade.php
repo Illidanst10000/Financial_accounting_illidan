@@ -8,7 +8,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Sources</h1>
+                        <h1 class="m-0">Types</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -26,7 +26,7 @@
                 <!-- Info boxes -->
                 <div class="row d-flex flex-column">
                     <div class="col-2 mb-3">
-                        <a href="{{route('admin.sources.create')}}" class="btn btn-block btn-success">Create Source</a>
+                        <a href="{{route('admin.types.create')}}" class="btn btn-block btn-success">Create Type</a>
                     </div>
                     <div class="card w-25 ml-2">
 
@@ -40,16 +40,16 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($sources as $source)
+                                @foreach($types as $type)
                                     <tr>
-                                        <td>{{$source->id}}</td>
-                                        <td>{{$source->title}}</td>
-                                        <td><a href="{{ route('admin.sources.show', $source->id) }}"><i
+                                        <td>{{$type->id}}</td>
+                                        <td>{{$type->title}}</td>
+                                        <td><a href="{{ route('admin.types.show', $type->id) }}"><i
                                                     class="far fa-eye"></i></a></td>
-                                        <td><a href="{{ route('admin.sources.edit', $source->id) }}"
+                                        <td><a href="{{ route('admin.types.edit', $type->id) }}"
                                                class="text-success"><i class="fas fa-pencil-alt"></i></a></td>
                                         <td>
-                                            <form action="{{route('admin.sources.delete', $source->id)}}" method="POST">
+                                            <form action="{{route('admin.types.delete', $type->id)}}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="border-0 bg-transparent">

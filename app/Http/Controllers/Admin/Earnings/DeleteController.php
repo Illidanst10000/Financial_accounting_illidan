@@ -1,18 +1,19 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Tags;
+namespace App\Http\Controllers\Admin\Earnings;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Earning;
 use App\Models\Source;
 use App\Models\Tag;
 use App\Models\Type;
 
 class DeleteController extends Controller
 {
-    public function __invoke(Tag $tag)
+    public function __invoke(Earning $earning)
     {
-        $tag->delete();
-        return redirect()->route('admin.tags.index');
+        $earning->delete();
+        return redirect()->route('admin.earnings.index');
     }
 }

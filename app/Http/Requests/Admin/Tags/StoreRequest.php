@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Admin\Categories;
+namespace App\Http\Requests\Admin\Tags;
 
 use Illuminate\Foundation\Http\FormRequest;
 

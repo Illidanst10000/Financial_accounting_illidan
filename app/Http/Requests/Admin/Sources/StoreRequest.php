@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Admin\Earnings;
+namespace App\Http\Requests\Admin\Sources;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateRequest extends FormRequest
+class StoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,11 +24,7 @@ class UpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'amount' => 'required|integer',
-            'date' => 'required|string',
-            'source_id' => 'required|integer|exists:sources,id',
-            'type_id' => 'required|integer|exists:types,id',
-            'description' => 'nullable|string',
+            'title' => 'required|string'
         ];
     }
 }

@@ -27,16 +27,18 @@
                 <div class="row">
                     <div class="card card-primary col-4">
                         <div class="card-header mt-3">
-                            <h3 class="card-title">Create source</h3>
+                            <h3 class="card-title">Update source</h3>
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form action="{{route('admin.sources.store')}}" method="POST">
+                        <form action="{{route('admin.sources.update', $source->id)}}" method="POST">
                             @csrf
+                            @method('PATCH')
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Source's name</label>
-                                    <input type="text" class="form-control" placeholder="Enter name" name="title">
+                                    <input type="text" class="form-control" placeholder="Enter name" name="title"
+                                    value="{{$source->title}}">
                                     @error('title')
                                     <div class="text-danger mt-2">You have to fill this input</div>
                                     @enderror
@@ -45,7 +47,7 @@
                             <!-- /.card-body -->
 
                             <div class="card-footer mb-3">
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="submit" class="btn btn-primary">Update</button>
                             </div>
                         </form>
                     </div>

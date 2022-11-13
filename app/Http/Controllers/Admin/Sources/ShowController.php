@@ -5,11 +5,10 @@ namespace App\Http\Controllers\Admin\Sources;
 use App\Http\Controllers\Controller;
 use App\Models\Source;
 
-class IndexController extends Controller
+class ShowController extends Controller
 {
-    public function __invoke()
+    public function __invoke(Source $source)
     {
-        $sources = Source::all();
-        return view('admin.sources.index', compact('sources'));
+        return view('admin.sources.show', compact('source'));
     }
 }

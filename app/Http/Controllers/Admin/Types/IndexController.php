@@ -1,15 +1,16 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Sources;
+namespace App\Http\Controllers\Admin\Types;
 
 use App\Http\Controllers\Controller;
 use App\Models\Source;
+use App\Models\Type;
 
 class IndexController extends Controller
 {
     public function __invoke()
     {
-        $sources = Source::all();
-        return view('admin.sources.index', compact('sources'));
+        $types = Type::all();
+        return view('admin.types.index', compact('types'));
     }
 }

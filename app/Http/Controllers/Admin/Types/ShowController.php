@@ -1,14 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Sources;
+namespace App\Http\Controllers\Admin\Types;
 
 use App\Http\Controllers\Controller;
 use App\Models\Source;
+use App\Models\Type;
 
 class ShowController extends Controller
 {
-    public function __invoke(Source $source)
+    public function __invoke(Type $type)
     {
-        return view('admin.sources.show', compact('source'));
+        return view('admin.types.show', compact('type'));
     }
 }

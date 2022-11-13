@@ -8,7 +8,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Tags</h1>
+                        <h1 class="m-0">Spendings</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -27,21 +27,59 @@
                 <div class="row">
                     <div class="card card-primary col-4">
                         <div class="card-header mt-3">
-                            <h3 class="card-title">Update tag</h3>
+                            <h3 class="card-title">Update spending</h3>
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form action="{{route('admin.tags.update', $tag->id)}}" method="POST">
+                        <form action="{{route('admin.spendings.update', $spending->id)}}" method="POST">
                             @csrf
                             @method('PATCH')
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Type's name</label>
-                                    <input type="text" class="form-control" placeholder="Enter name" name="title"
-                                    value="{{$tag->title}}">
+                                    <label>Amount:</label>
+                                    <input type="text" class="form-control" placeholder="Edit amount" name="amount"
+                                           value="{{$spending->amount}}">
                                     @error('title')
                                     <div class="text-danger mt-2">You have to fill this input</div>
                                     @enderror
+                                </div>
+
+                                <!-- Date -->
+                                <div class="form-group">
+                                    <label>Date:</label>
+                                    <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
+                                        <input type="text" value="{{$spending->date}}" name="date"
+                                               class="form-control datetimepicker-input"
+                                               data-target="#datetimepicker1"/>
+                                        <div class="input-group-append" data-target="#datetimepicker1"
+                                             data-toggle="datetimepicker">
+                                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Category</label>
+                                    <select class="form-control" name="category_id">
+                                        @foreach($categories as $category)
+                                            <option
+                                                value="{{ $category->id }}" {{$category->id == $spending->category_id ? ' selected' : ''}}>{{ $category->title }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Tags</label>
+                                    <select class="select2" name="tag_ids[]" multiple="multiple"
+                                            data-placeholder="Select a Tag"
+                                            style="width: 100%;">
+                                        @foreach($tags as $tag)
+                                            <option {{is_array( $spending->tags->pluck('id')->toArray()) && in_array($tag->id, $spending->tags->pluck('id')->toArray()) ? ' selected' : ''}} value="{{ $tag->id }}">{{ $tag->title }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="form-group mt-3">
+                                    <h6 class="text-bold">Decription</h6>
+                                    <textarea name="description" id="summernote">{{$spending->description}}</textarea>
                                 </div>
                             </div>
                             <!-- /.card-body -->
@@ -54,8 +92,6 @@
 
                 </div>
                 <!-- /.row -->
-
-
 
 
             </div><!--/. container-fluid -->

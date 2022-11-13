@@ -3,11 +3,16 @@
 namespace App\Http\Controllers\Admin\Sources;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Sources\StoreRequest;
+use App\Models\Source;
 
-class CreateController extends Controller
+class StoreController extends Controller
 {
-    public function __invoke()
+    public function __invoke(StoreRequest $request)
     {
-        return view('admin.sources.create');
+        $data = $request->validated();
+        Source::firstOrCreate($data);
+
+        return redirect()->route('admin.sources.index');
     }
 }
