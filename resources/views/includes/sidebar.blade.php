@@ -20,48 +20,9 @@
                 <!-- Add icons to the links using the .nav-icon class
                      with font-awesome or any other icon font library -->
 
+
                 <li class="nav-item">
-                    <a href="" class="nav-link">
-                        <i class="nav-icon fas fa-angle-double-up"></i>
-                        <p>
-                            Users
-                        </p>
-                    </a><i class=""></i>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ route('admin.sources.index') }}" class="nav-link">
-                        <i class="nav-icon fas fa-angle-double-up"></i>
-                        <p>
-                            Sources
-                        </p>
-                    </a><i class=""></i>
-                </li>
-                <li class="nav-item">
-                    <a href="{{route('admin.types.index')}}" class="nav-link">
-                        <i class="nav-icon far fa-bookmark pr-2"></i>
-                        <p>
-                            Types
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{route('admin.tags.index')}}" class="nav-link">
-                        <i class="nav-icon fab fa-buffer pr-2"></i>
-                        <p>
-                            Tags
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{route('admin.categories.index')}}" class="nav-link">
-                        <i class="nav-icon far fa-bookmark pr-2"></i>
-                        <p>
-                            Categories
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{route('admin.earnings.index')}}" class="nav-link">
+                    <a href="{{route('user.earnings.index')}}" class="nav-link">
                         <i class="nav-icon far fa-arrow-alt-circle-up pr-2"></i>
                         <p>
                             Earnings
@@ -69,13 +30,23 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{route('admin.spendings.index')}}" class="nav-link">
+                    <a href="{{route('user.spendings.index')}}" class="nav-link">
                         <i class="nav-icon far fa-arrow-alt-circle-down pr-2"></i>
                         <p>
                             Spendings
                         </p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{route('user.tags.index')}}" class="nav-link">
+                        <i class="nav-icon fab fa-buffer pr-2"></i>
+                        <p>
+                            Tags
+                        </p>
+                    </a>
+                </li>
+
+
 
                 <li class="nav-item">
                     <a href="#" class="nav-link">
