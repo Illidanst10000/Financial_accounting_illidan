@@ -30,16 +30,6 @@ Route::get('/', App\Http\Controllers\Main\IndexController::class)->name('main.in
             Route::delete('/{source}', \App\Http\Controllers\Admin\Sources\DeleteController::class)->name('admin.sources.delete');
     });
 
-        Route::group(['prefix' => 'types'], function () {
-            Route::get('/', \App\Http\Controllers\Admin\Types\IndexController::class)->name('admin.types.index');
-            Route::get('/create', \App\Http\Controllers\Admin\Types\CreateController::class)->name('admin.types.create');
-            Route::post('/', \App\Http\Controllers\Admin\Types\StoreController::class)->name('admin.types.store');
-            Route::get('/{type}', \App\Http\Controllers\Admin\Types\ShowController::class)->name('admin.types.show');
-            Route::get('/{type}/edit', \App\Http\Controllers\Admin\Types\EditController::class)->name('admin.types.edit');
-            Route::patch('/{type}', \App\Http\Controllers\Admin\Types\UpdateController::class)->name('admin.types.update');
-            Route::delete('/{type}', \App\Http\Controllers\Admin\Types\DeleteController::class)->name('admin.types.delete');
-    });
-
         Route::group(['prefix' => 'categories'], function () {
             Route::get('/', \App\Http\Controllers\Admin\Categories\IndexController::class)->name('admin.categories.index');
             Route::get('/create', \App\Http\Controllers\Admin\Categories\CreateController::class)->name('admin.categories.create');

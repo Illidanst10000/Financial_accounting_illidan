@@ -21,7 +21,7 @@
                      with font-awesome or any other icon font library -->
 
                 <li class="nav-item">
-                    <a href="" class="nav-link">
+                    <a href="{{ route('admin.users.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-angle-double-up"></i>
                         <p>
                             Users
@@ -35,14 +35,6 @@
                             Sources
                         </p>
                     </a><i class=""></i>
-                </li>
-                <li class="nav-item">
-                    <a href="{{route('admin.types.index')}}" class="nav-link">
-                        <i class="nav-icon far fa-bookmark pr-2"></i>
-                        <p>
-                            Types
-                        </p>
-                    </a>
                 </li>
                 <li class="nav-item">
                     <a href="{{route('admin.tags.index')}}" class="nav-link">
