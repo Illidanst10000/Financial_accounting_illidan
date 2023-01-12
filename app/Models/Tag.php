@@ -11,4 +11,8 @@ class Tag extends Model
 
     protected $table = 'tags';
     protected $guarded = false;
+
+    public function userTags() {
+        return $this->belongsToMany(User::class, 'user_tags');
+    }
 }
