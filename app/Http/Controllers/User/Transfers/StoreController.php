@@ -1,24 +1,36 @@
 <?php
 
-namespace App\Http\Controllers\User\Tags;
+namespace App\Http\Controllers\User\Transfers;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\User\Tags\StoreRequest;
-use App\Models\Category;
-use App\Models\Source;
-use App\Models\Tag;
+use App\Http\Requests\User\Transfers\StoreRequest;
 use App\Models\Type;
+use App\Models\UserBalance;
+use Illuminate\Support\Facades\DB;
 
 class StoreController extends Controller
 {
     public function __invoke(StoreRequest $request)
     {
         $data = $request->validated();
-        $tag = Tag::firstOrCreate($data);
 
-        $userId = auth()->user()->id;
-        $tag->userTags()->attach($userId);
+        try {
+            DB::beginTransaction();
 
-        return redirect()->route('user.tags.index');
+            $userId = auth()->user()->id;
+
+            $userBalance = new UserBalance();
+
+            $userBalance->decrementBalance($data['fromType_id'], $userId, $data['amount']);
+            $userBalance->incrementBalance($data['toType_id'], $userId, $data['amount']);
+
+            DB::commit();
+        }
+    catch (\Exception $exception) {
+        DB::rollBack();
+        abort(500);
+    }
+
+        return redirect()->route('main.index');
     }
 }

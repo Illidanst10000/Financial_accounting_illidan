@@ -1,4 +1,4 @@
-@extends('admin.layouts.main')
+@extends('layouts.main')
 
 @section('content')
     <!-- Content Wrapper. Contains page content -->
@@ -31,7 +31,7 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form action="{{route('admin.tags.update', $tag->id)}}" method="POST">
+                        <form action="{{route('user.tags.update', $tag->id)}}" method="POST">
                             @csrf
                             @method('PATCH')
                             <div class="card-body">

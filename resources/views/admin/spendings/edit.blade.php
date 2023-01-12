@@ -77,6 +77,15 @@
                                         @endforeach
                                     </select>
                                 </div>
+                                <div class="form-group">
+                                    <label>Type</label>
+                                    <select class="form-control" name="type_id">
+                                        @foreach($types as $id => $type)
+                                            <option
+                                                value="{{ $id }}" {{$id == $earning->type_id ? ' selected' : ''}}>{{ $type }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
                                 <div class="form-group mt-3">
                                     <h6 class="text-bold">Decription</h6>
                                     <textarea name="description" id="summernote">{{$spending->description}}</textarea>

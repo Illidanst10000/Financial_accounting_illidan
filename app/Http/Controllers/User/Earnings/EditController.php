@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Earnings;
+namespace App\Http\Controllers\User\Earnings;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
@@ -13,8 +13,8 @@ class EditController extends Controller
 {
     public function __invoke(Earning $earning)
     {
-        $types = Type::all();
+        $types = Type::getTypes();
         $sources = Source::all();
-        return view('admin.earnings.edit', compact('earning', 'types', 'sources'));
+        return view('user.earnings.edit', compact('earning', 'types', 'sources'));
     }
 }

@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Tags;
+namespace App\Http\Controllers\User\Tags;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\Tags\UpdateRequest;
+use App\Http\Requests\User\Tags\UpdateRequest;
 use App\Models\Category;
 use App\Models\Source;
 use App\Models\Tag;
@@ -16,6 +16,6 @@ class UpdateController extends Controller
         $data = $request->validated();
         $tag->update($data);
 
-        return redirect()->route('admin.tags.show', compact('tag'));
+        return redirect()->route('user.tags.show', compact('tag'));
     }
 }

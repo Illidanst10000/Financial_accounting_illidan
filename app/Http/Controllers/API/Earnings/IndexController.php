@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\User\Earnings;
+namespace App\Http\Controllers\API\Earnings;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
@@ -15,12 +15,13 @@ class IndexController extends Controller
 {
     public function __invoke()
     {
-        $userId = auth()->user()->id;
+        //$userId = auth()->user()->id;
 
-        $earnings = DB::table('earnings')
-            ->join('user_earnings', 'earnings.id', '=', 'user_earnings.earning_id')
-            ->where('user_id', '=', $userId)->get();
+       // $earnings = DB::table('earnings')
+        //    ->join('user_earnings', 'earnings.id', '=', 'user_earnings.earning_id')
+        //    ->where('user_id', '=', $userId)->get();
 
-        return view('user.earnings.index', compact('earnings'));
+        $earnings = Earning::all();
+        return $earnings;
     }
 }

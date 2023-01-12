@@ -13,7 +13,7 @@ class EditController extends Controller
 {
     public function __invoke(Earning $earning)
     {
-        $types = Type::all();
+        $types = Type::getTypes();
         $sources = Source::all();
         return view('admin.earnings.edit', compact('earning', 'types', 'sources'));
     }

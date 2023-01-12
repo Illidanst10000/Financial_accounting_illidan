@@ -1,4 +1,4 @@
-@extends('admin.layouts.main')
+@extends('layouts.main')
 
 @section('content')
     <!-- Content Wrapper. Contains page content -->
@@ -31,7 +31,7 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form action="{{route('admin.earnings.store')}}" method="POST">
+                        <form action="{{route('user.earnings.store')}}" method="POST">
                             @csrf
                             <div class="card-body">
                                 <div class="form-group">
@@ -64,8 +64,8 @@
                                 <div class="form-group">
                                     <label>Type</label>
                                     <select class="form-control" name="type_id">
-                                        @foreach($types as $type)
-                                            <option value="{{ $type->id }}">{{ $type->title }}</option>
+                                        @foreach($types as $id => $type)
+                                            <option value="{{ $id }}">{{ $type}}</option>
                                         @endforeach
                                     </select>
                                 </div>

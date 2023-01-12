@@ -8,7 +8,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Categories</h1>
+                        <h1 class="m-0">Users</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -33,15 +33,15 @@
 
                                 <tbody>
 
-                                    <tr>
-                                        <td>ID</td>
-                                        <td>Name</td>
-                                    </tr>
+                                <tr>
+                                    <td>ID</td>
+                                    <td>Name</td>
+                                </tr>
 
-                                    <tr>
-                                        <td>{{$category->id}}</td>
-                                        <td>{{$category->title}}</td>
-                                    </tr>
+                                <tr>
+                                    <td>{{$user->id}}</td>
+                                    <td>{{$user->name}}</td>
+                                </tr>
 
 
                                 </tbody>
@@ -51,8 +51,6 @@
                     </div>
                 </div>
                 <!-- /.row -->
-
-
 
 
             </div><!--/. container-fluid -->

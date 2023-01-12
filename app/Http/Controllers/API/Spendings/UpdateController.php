@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\User\Spendings;
+namespace App\Http\Controllers\API\Spendings;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User\Spendings\UpdateRequest;

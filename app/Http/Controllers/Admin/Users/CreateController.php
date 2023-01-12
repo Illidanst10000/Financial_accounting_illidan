@@ -1,13 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Categories;
+namespace App\Http\Controllers\Admin\Users;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 
 class CreateController extends Controller
 {
     public function __invoke()
     {
-        return view('admin.categories.create');
+        $roles = User::getRoles();
+        return view('admin.users.create', compact('roles'));
     }
 }

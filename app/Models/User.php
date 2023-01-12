@@ -13,6 +13,20 @@ class User extends Authenticatable implements JWTSubject
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    const ROLE_USER = 0;
+    const ROLE_ADMIN = 1;
+
+    public static function getRoles()
+    {
+        return [
+            self::ROLE_USER => 'User',
+            self::ROLE_ADMIN => 'Admin',
+        ];
+    }
+
+    public function balance() {
+        return $this->hasOne(UserBalance::class);
+    }
     /**
      * The attributes that are mass assignable.
      *
@@ -22,6 +36,7 @@ class User extends Authenticatable implements JWTSubject
         'name',
         'email',
         'password',
+        'role',
     ];
 
     /**
@@ -43,6 +58,7 @@ class User extends Authenticatable implements JWTSubject
         'email_verified_at' => 'datetime',
     ];
 
+
     public function getJWTIdentifier()
     {
         return $this->getKey();
@@ -52,4 +68,5 @@ class User extends Authenticatable implements JWTSubject
     {
         return [];
     }
+
 }

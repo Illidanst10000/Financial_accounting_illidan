@@ -1,4 +1,4 @@
-@extends('admin.layouts.main')
+@extends('layouts.main')
 
 @section('content')
     <!-- Content Wrapper. Contains page content -->
@@ -31,7 +31,7 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form action="{{route('admin.tags.store')}}" method="POST">
+                        <form action="{{route('user.tags.store')}}" method="POST">
                             @csrf
                             <div class="card-body">
                                 <div class="form-group">

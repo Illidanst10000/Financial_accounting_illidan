@@ -1,4 +1,4 @@
-@extends('admin.layouts.main')
+@extends('layouts.main')
 
 @section('content')
     <!-- Content Wrapper. Contains page content -->
@@ -26,7 +26,7 @@
                 <!-- Info boxes -->
                 <div class="row d-flex flex-column">
                     <div class="col-2 mb-3">
-                        <a href="{{route('admin.tags.create')}}" class="btn btn-block btn-success">Create Tag</a>
+                        <a href="{{route('user.tags.create')}}" class="btn btn-block btn-success">Create Tag</a>
                     </div>
                     <div class="card w-25 ml-2">
 
@@ -44,12 +44,12 @@
                                     <tr>
                                         <td>{{$tag->id}}</td>
                                         <td>{{$tag->title}}</td>
-                                        <td><a href="{{ route('admin.tags.show', $tag->id) }}"><i
+                                        <td><a href="{{ route('user.tags.show', $tag->id) }}"><i
                                                     class="far fa-eye"></i></a></td>
-                                        <td><a href="{{ route('admin.tags.edit', $tag->id) }}"
+                                        <td><a href="{{ route('user.tags.edit', $tag->id) }}"
                                                class="text-success"><i class="fas fa-pencil-alt"></i></a></td>
                                         <td>
-                                            <form action="{{route('admin.tags.delete', $tag->id)}}" method="POST">
+                                            <form action="{{route('user.tags.delete', $tag->id)}}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="border-0 bg-transparent">

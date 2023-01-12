@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Source extends Model
 {
     use HasFactory;
-    use SoftDeletes;
+
 
     protected $table = 'sources';
     protected $guarded = false;

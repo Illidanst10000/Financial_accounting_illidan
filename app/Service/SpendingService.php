@@ -11,12 +11,23 @@ class SpendingService
         try {
             DB::beginTransaction();
 
-            $tagIds = $data['tag_ids'];
-            unset($data['tag_ids']);
+            if (isset($data['tag_ids'])) {
+                $tagIds = $data['tag_ids'];
+                unset($data['tag_ids']);
+            }
 
             $spending = Spending::firstOrCreate($data);
-            $spending->tags()->attach($tagIds);
 
+            if (isset($tagIds)) {
+                $spending->tags()->attach($tagIds);
+            }
+
+            $userId = auth()->user()->id;
+            $spending->userSpendings()->attach($userId);
+            DB::table('user_balances')
+                ->where('type_id', '=', $spending['type_id'])
+                ->where('user_id', '=', $userId)
+                ->decrement('balance', $spending['amount']);
             DB::commit();
         }
         catch (\Exception $exception) {
@@ -29,11 +40,25 @@ class SpendingService
         try {
             DB::beginTransaction();
 
-            $tagIds = $data['tag_ids'];
-            unset($data['tag_ids']);
+            if (isset($data['tag_ids'])) {
+                $tagIds = $data['tag_ids'];
+                unset($data['tag_ids']);
+            }
 
             $spending->update($data);
-            $spending->tags()->sync($tagIds);
+
+            $userId = auth()->user()->id;
+            DB::table('user_balances')
+                ->where('type_id', '=', $spending['type_id'])
+                ->where('user_id', '=', $userId)
+                ->increment('balance', $spending['amount'] - $data['amount']);
+
+            if (isset($tagIds)) {
+                $spending->tags()->sync($tagIds);
+            }
+            else {
+                $spending->tags()->delete();
+            }
 
             DB::commit();
         }

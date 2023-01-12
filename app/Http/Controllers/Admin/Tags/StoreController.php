@@ -14,7 +14,10 @@ class StoreController extends Controller
     public function __invoke(StoreRequest $request)
     {
         $data = $request->validated();
-        Tag::firstOrCreate($data);
+        $tag = Tag::firstOrCreate($data);
+
+        $userId = auth()->user()->id;
+        $tag->userTags()->attach($userId);
 
         return redirect()->route('admin.tags.index');
     }

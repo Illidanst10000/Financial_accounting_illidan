@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Admin\Spendings;
+namespace App\Http\Requests\User\Spendings;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -29,6 +29,7 @@ class UpdateRequest extends FormRequest
             'category_id' => 'required|integer|exists:categories,id',
             'tag_ids' => 'nullable|array',
             'tag_ids.*' => 'nullable|integer|exists:tags,id',
+            'type_id' => 'required|integer',
             'description' => 'nullable|string',
         ];
     }

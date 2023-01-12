@@ -27,19 +27,35 @@
                 <div class="row">
                     <div class="card card-primary col-4">
                         <div class="card-header mt-3">
-                            <h3 class="card-title">Create tag</h3>
+                            <h3 class="card-title">Create transfer</h3>
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form action="{{route('user.tags.store')}}" method="POST">
+                        <form action="{{route('user.transfers.store')}}" method="POST">
                             @csrf
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Tag name</label>
-                                    <input type="text" class="form-control" placeholder="Enter name" name="title">
+                                    <label>Amount:</label>
+                                    <input type="text" class="form-control" placeholder="Enter amount" name="amount">
                                     @error('title')
                                     <div class="text-danger mt-2">You have to fill this input</div>
                                     @enderror
+                                </div>
+                                <div class="form-group">
+                                    <label>From type:</label>
+                                    <select class="form-control" name="fromType_id">
+                                        @foreach($types as $id => $type)
+                                            <option value="{{ $id }}">{{ $type}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>To Type:</label>
+                                    <select class="form-control" name="toType_id">
+                                        @foreach($types as $id => $type)
+                                            <option value="{{ $id }}">{{ $type}}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
                             <!-- /.card-body -->

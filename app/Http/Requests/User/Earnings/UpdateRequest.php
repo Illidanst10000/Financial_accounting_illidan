@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Admin\Earnings;
+namespace App\Http\Requests\User\Earnings;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -27,7 +27,7 @@ class UpdateRequest extends FormRequest
             'amount' => 'required|integer',
             'date' => 'required|string',
             'source_id' => 'required|integer|exists:sources,id',
-            'type_id' => 'required|integer|exists:types,id',
+            'type_id' => 'required|integer',
             'description' => 'nullable|string',
         ];
     }

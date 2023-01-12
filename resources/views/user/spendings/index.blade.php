@@ -1,4 +1,4 @@
-@extends('admin.layouts.main')
+@extends('layouts.main')
 
 @section('content')
     <!-- Content Wrapper. Contains page content -->
@@ -26,7 +26,7 @@
                 <!-- Info boxes -->
                 <div class="row d-flex flex-column">
                     <div class="col-2 mb-3">
-                        <a href="{{route('admin.spendings.create')}}" class="btn btn-block btn-success">Add Spending</a>
+                        <a href="{{route('user.spendings.create')}}" class="btn btn-block btn-success">Add Spending</a>
                     </div>
                     <div class="card w-25 ml-2">
 
@@ -44,12 +44,12 @@
                                     <tr>
                                         <td>{{$spending->id}}</td>
                                         <td>{{$spending->amount}}</td>
-                                        <td><a href="{{ route('admin.spendings.show', $spending->id) }}"><i
+                                        <td><a href="{{ route('user.spendings.show', $spending->id) }}"><i
                                                     class="far fa-eye"></i></a></td>
-                                        <td><a href="{{ route('admin.spendings.edit', $spending->id) }}"
+                                        <td><a href="{{ route('user.spendings.edit', $spending->id) }}"
                                                class="text-success"><i class="fas fa-pencil-alt"></i></a></td>
                                         <td>
-                                            <form action="{{route('admin.spendings.delete', $spending->id)}}" method="POST">
+                                            <form action="{{route('user.spendings.delete', $spending->id)}}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="border-0 bg-transparent">

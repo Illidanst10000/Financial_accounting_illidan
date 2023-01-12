@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\User\Earnings;
+namespace App\Http\Controllers\API\Earnings;
 
 use App\Http\Controllers\Controller;
 use App\Models\Source;

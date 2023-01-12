@@ -19,7 +19,6 @@ return new class extends Migration
             $table->foreignId('spending_id')->constrained();
             $table->foreignId('tag_id')->constrained();
 
-            $table->softDeletes();
             $table->timestamps();
         });
     }

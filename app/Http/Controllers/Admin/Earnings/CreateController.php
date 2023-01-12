@@ -10,7 +10,7 @@ class CreateController extends Controller
 {
     public function __invoke()
     {
-        $types = Type::all();
+        $types = Type::getTypes();
         $sources = Source::all();
         return view('admin.earnings.create', compact('types', 'sources'));
     }
