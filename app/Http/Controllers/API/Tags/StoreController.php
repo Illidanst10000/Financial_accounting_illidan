@@ -19,6 +19,6 @@ class StoreController extends Controller
         $userId = auth()->user()->id;
         $tag->userTags()->attach($userId);
 
-        return redirect()->route('user.tags.index');
+        return response()->json($tag);;
     }
 }

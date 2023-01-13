@@ -20,6 +20,6 @@ class IndexController extends BaseController
             ->join('user_spendings', 'spendings.id', '=', 'user_spendings.spending_id')
             ->where('user_id', '=', $userId)->get();
 
-        return view('user.spendings.index', compact('spendings'));
+        return response()->json($spendings);
     }
 }

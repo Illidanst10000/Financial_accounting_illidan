@@ -15,13 +15,12 @@ class IndexController extends Controller
 {
     public function __invoke()
     {
-        //$userId = auth()->user()->id;
+       $userId = auth()->user()->id;
 
-       // $earnings = DB::table('earnings')
-        //    ->join('user_earnings', 'earnings.id', '=', 'user_earnings.earning_id')
-        //    ->where('user_id', '=', $userId)->get();
+       $earnings = DB::table('earnings')
+           ->join('user_earnings', 'earnings.id', '=', 'user_earnings.earning_id')
+            ->where('user_id', '=', $userId)->get();
 
-        $earnings = Earning::all();
-        return $earnings;
+        return response()->json($earnings);
     }
 }
