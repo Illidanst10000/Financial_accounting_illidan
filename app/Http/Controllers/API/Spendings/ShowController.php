@@ -9,10 +9,10 @@ use App\Models\Spending;
 use App\Models\Tag;
 use App\Models\Type;
 
-class ShowController extends BaseController
+class ShowController extends Controller
 {
     public function __invoke(Spending $spending)
     {
-        return view('user.spendings.show', compact('spending'));
+        return response('lol');
     }
 }

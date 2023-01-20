@@ -27,20 +27,16 @@ Route::group(['middleware' => 'api'], function () {
 
     Route::group(['prefix' => 'earnings'], function () {
         Route::get('/', \App\Http\Controllers\API\Earnings\IndexController::class)->name('api.earnings.index');
-        Route::get('/create', \App\Http\Controllers\API\Earnings\CreateController::class)->name('api.earnings.create');
         Route::post('/', \App\Http\Controllers\API\Earnings\StoreController::class)->name('api.earnings.store');
         Route::get('/{earning}', \App\Http\Controllers\API\Earnings\ShowController::class)->name('api.earnings.show');
-        Route::get('/{earning}/edit', \App\Http\Controllers\API\Earnings\EditController::class)->name('api.earnings.edit');
         Route::patch('/{earning}', \App\Http\Controllers\API\Earnings\UpdateController::class)->name('api.earnings.update');
         Route::delete('/{earning}', \App\Http\Controllers\API\Earnings\DeleteController::class)->name('api.earnings.delete');
     });
 
     Route::group(['prefix' => 'spendings'], function () {
         Route::get('/', \App\Http\Controllers\API\Spendings\IndexController::class)->name('api.spendings.index');
-        Route::get('/create', \App\Http\Controllers\API\Spendings\CreateController::class)->name('api.spendings.create');
         Route::post('/', \App\Http\Controllers\API\Spendings\StoreController::class)->name('api.spendings.store');
         Route::get('/{spending}', \App\Http\Controllers\API\Spendings\ShowController::class)->name('api.spendings.show');
-        Route::get('/{spending}/edit', \App\Http\Controllers\API\Spendings\EditController::class)->name('api.spendings.edit');
         Route::patch('/{spending}', \App\Http\Controllers\API\Spendings\UpdateController::class)->name('api.spendings.update');
         Route::delete('/{spending}', \App\Http\Controllers\API\Spendings\DeleteController::class)->name('api.spendings.delete');
     });

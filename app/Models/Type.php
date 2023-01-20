@@ -29,4 +29,5 @@ class Type extends Model
             self::TYPE_DEBT => 'Debt',
         ];
     }
+
 }

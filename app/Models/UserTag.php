@@ -10,7 +10,6 @@ class UserTag extends Model
 {
     use HasFactory;
 
-
     protected $table = 'user_tags';
     protected $guarded = false;
 }

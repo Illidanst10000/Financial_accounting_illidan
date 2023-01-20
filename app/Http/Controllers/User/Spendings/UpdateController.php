@@ -14,7 +14,7 @@ class UpdateController extends BaseController
 {
     public function __invoke(UpdateRequest $request, Spending $spending)
     {
-            $data = $request->validated();
+        $data = $request->validated();
         $spending = $this->service->update($data, $spending);
 
         return redirect()->route('user.spendings.show', compact('spending'));

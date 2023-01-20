@@ -10,7 +10,6 @@ class Spending extends Model
 {
     use HasFactory;
 
-
     protected $table = 'spendings';
     protected $guarded = false;
 

@@ -10,7 +10,7 @@ use App\Models\Tag;
 use App\Models\Type;
 use Illuminate\Support\Facades\DB;
 
-class IndexController extends BaseController
+class IndexController extends Controller
 {
     public function __invoke()
     {

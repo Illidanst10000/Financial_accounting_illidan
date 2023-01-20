@@ -3,7 +3,6 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-use \App\Http\Controllers\User as User;
 
 
 /*
@@ -23,7 +22,7 @@ use \App\Http\Controllers\User as User;
     Route::get('/', App\Http\Controllers\Main\IndexController::class)->name('main.index');
 
     Route::group(['prefix' => 'tags'], function () {
-        Route::get('/', User\Tags\IndexController::class)->name('user.tags.index');
+        Route::get('/', \App\Http\Controllers\User\Tags\IndexController::class)->name('user.tags.index');
         Route::get('/create', \App\Http\Controllers\User\Tags\CreateController::class)->name('user.tags.create');
         Route::post('/', \App\Http\Controllers\User\Tags\StoreController::class)->name('user.tags.store');
         Route::get('/{tag}', \App\Http\Controllers\User\Tags\ShowController::class)->name('user.tags.show');
