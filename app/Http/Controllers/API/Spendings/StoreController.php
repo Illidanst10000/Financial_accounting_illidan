@@ -21,8 +21,6 @@ class StoreController extends Controller
         try {
             DB::beginTransaction();
 
-            $userId = auth()->user()->id;
-
             $category_id = Category::where('title', $data['category_id'])->first()->id;
             $data['category_id'] = $category_id;
 

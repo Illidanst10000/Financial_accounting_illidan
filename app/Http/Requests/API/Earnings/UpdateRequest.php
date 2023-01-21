@@ -25,10 +25,20 @@ class UpdateRequest extends FormRequest
     {
         return [
             'amount' => 'required|integer',
-            'date' => 'required|string',
-            'source_id' => 'required|integer|exists:sources,id',
-            'type_id' => 'required|integer',
+            'date' => 'nullable|string',
+            'source_id' => 'nullable|string|exists:sources,title',
+            'type_id' => 'nullable|string',
             'description' => 'nullable|string',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+
+            'amount.integer' => 'xyi',
+            'amount.required' => 'xyi1',
+            'amount' => 'xyi2',
         ];
     }
 }
