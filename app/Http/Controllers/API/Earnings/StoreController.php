@@ -16,6 +16,7 @@ class StoreController extends Controller
     {
         $data = $request->validated();
 
+
         $earning = Earning::firstOrCreate($data);
 
         $userId = auth()->user()->id;
