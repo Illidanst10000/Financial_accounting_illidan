@@ -9,8 +9,13 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Earning extends Model
 {
     use HasFactory;
-    use SoftDeletes;
+
 
     protected $table = 'earnings';
     protected $guarded = false;
+
+
+    public function userEarnings() {
+        return $this->belongsToMany(User::class, 'user_earnings');
+    }
 }

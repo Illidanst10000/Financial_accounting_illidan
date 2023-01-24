@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\User\Tags;
+namespace App\Http\Requests\User\Transfers;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -24,7 +24,9 @@ class StoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|string'
+            'amount' => 'required|integer',
+            'fromType_id' => 'required|integer',
+            'toType_id' => 'required|integer',
         ];
     }
 }

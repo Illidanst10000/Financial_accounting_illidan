@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\User\Spendings;
+namespace App\Http\Controllers\API\Spendings;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
@@ -9,11 +9,11 @@ use App\Models\Spending;
 use App\Models\Tag;
 use App\Models\Type;
 
-class DeleteController extends BaseController
+class DeleteController extends Controller
 {
     public function __invoke(Spending $spending)
     {
         $spending->delete();
-        return redirect()->route('user.spendings.index');
+        return response('lol');
     }
 }

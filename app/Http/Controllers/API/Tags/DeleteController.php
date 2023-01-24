@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\User\Tags;
+namespace App\Http\Controllers\API\Tags;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
@@ -13,6 +13,10 @@ class DeleteController extends Controller
     public function __invoke(Tag $tag)
     {
         $tag->delete();
-        return redirect()->route('user.tags.index');
+
+        $userId = auth()->user()->id;
+        $tag->userTags()->delete($userId);
+
+        return response(200);
     }
 }

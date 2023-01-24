@@ -1,4 +1,4 @@
-@extends('admin.layouts.main')
+@extends('layouts.main')
 
 @section('content')
     <!-- Content Wrapper. Contains page content -->
@@ -31,7 +31,7 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form action="{{route('admin.spendings.update', $spending->id)}}" method="POST">
+                        <form action="{{route('user.spendings.update', $spending->id)}}" method="POST">
                             @csrf
                             @method('PATCH')
                             <div class="card-body">
@@ -74,6 +74,15 @@
                                             style="width: 100%;">
                                         @foreach($tags as $tag)
                                             <option {{is_array( $spending->tags->pluck('id')->toArray()) && in_array($tag->id, $spending->tags->pluck('id')->toArray()) ? ' selected' : ''}} value="{{ $tag->id }}">{{ $tag->title }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Type</label>
+                                    <select class="form-control" name="type_id">
+                                        @foreach($types as $id => $type)
+                                            <option
+                                                value="{{ $id }}" {{$id == $spending->type_id ? ' selected' : ''}}>{{ $type }}</option>
                                         @endforeach
                                     </select>
                                 </div>

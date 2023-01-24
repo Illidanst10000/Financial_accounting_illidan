@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Tags;
+namespace App\Http\Controllers\User\Tags;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
@@ -12,6 +12,6 @@ class EditController extends Controller
 {
     public function __invoke(Tag $tag)
     {
-        return view('admin.tags.edit', compact('tag'));
+        return view('user.tags.edit', compact('tag'));
     }
 }

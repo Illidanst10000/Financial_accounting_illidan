@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Earnings;
+namespace App\Http\Controllers\User\Earnings;
 
 use App\Http\Controllers\Controller;
 use App\Models\Source;
@@ -10,8 +10,8 @@ class CreateController extends Controller
 {
     public function __invoke()
     {
-        $types = Type::all();
+        $types = Type::getTypes();
         $sources = Source::all();
-        return view('admin.earnings.create', compact('types', 'sources'));
+        return view('user.earnings.create', compact('types', 'sources'));
     }
 }

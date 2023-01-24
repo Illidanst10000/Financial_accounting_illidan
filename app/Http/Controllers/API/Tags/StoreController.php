@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\User\Tags;
+namespace App\Http\Controllers\API\Tags;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User\Tags\StoreRequest;
@@ -19,6 +19,6 @@ class StoreController extends Controller
         $userId = auth()->user()->id;
         $tag->userTags()->attach($userId);
 
-        return redirect()->route('user.tags.index');
+        return response()->json($tag);;
     }
 }

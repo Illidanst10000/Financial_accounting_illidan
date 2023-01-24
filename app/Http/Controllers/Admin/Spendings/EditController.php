@@ -15,7 +15,7 @@ class EditController extends BaseController
     {
         $categories = Category::all();
         $tags = Tag::all();
-
-        return view('admin.spendings.edit', compact('spending', 'categories', 'tags'));
+        $types = Type::getTypes();
+        return view('admin.spendings.edit', compact('spending', 'categories', 'tags', 'types'));
     }
 }

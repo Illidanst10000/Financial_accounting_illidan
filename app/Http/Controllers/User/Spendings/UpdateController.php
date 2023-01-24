@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Spendings;
+namespace App\Http\Controllers\User\Spendings;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\Spendings\UpdateRequest;
+use App\Http\Requests\User\Spendings\UpdateRequest;
 use App\Models\Category;
 use App\Models\Source;
 use App\Models\Spending;
@@ -14,9 +14,9 @@ class UpdateController extends BaseController
 {
     public function __invoke(UpdateRequest $request, Spending $spending)
     {
-            $data = $request->validated();
+        $data = $request->validated();
         $spending = $this->service->update($data, $spending);
 
-        return redirect()->route('admin.spendings.show', compact('spending'));
+        return redirect()->route('user.spendings.show', compact('spending'));
     }
 }

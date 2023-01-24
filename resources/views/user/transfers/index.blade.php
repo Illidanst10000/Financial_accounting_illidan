@@ -26,45 +26,7 @@
                 <!-- Info boxes -->
                 <div class="row d-flex flex-column">
                     <div class="col-2 mb-3">
-                        <a href="{{route('user.tags.create')}}" class="btn btn-block btn-success">Create Tag</a>
-                    </div>
-                    <div class="card w-25 ml-2">
-
-                        <div class="card-body p-0">
-                            <table class="table table-sm">
-                                <thead>
-                                <tr>
-                                    <th style="width: 10px">#</th>
-                                    <th>Name</th>
-                                    <th colspan="3" class="text-center pr-5">Action</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                @foreach($tags as $tag)
-                                    <tr>
-                                        <td>{{$tag->id}}</td>
-                                        <td>{{$tag->title}}</td>
-                                        <td><a href="{{ route('user.tags.show', $tag->id) }}"><i
-                                                    class="far fa-eye"></i></a></td>
-                                        <td><a href="{{ route('user.tags.edit', $tag->id) }}"
-                                               class="text-success"><i class="fas fa-pencil-alt"></i></a></td>
-                                        <td>
-                                            <form action="{{route('user.tags.delete', $tag->id)}}" method="POST">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="border-0 bg-transparent">
-                                                    <i class="fas fa-trash text-danger" role="button"></i>
-
-                                                </button>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                @endforeach
-
-                                </tbody>
-                            </table>
-                        </div>
-                        <!-- /.card-body -->
+                        <a href="{{route('user.transfers.create')}}" class="btn btn-block btn-success">Create Transfer</a>
                     </div>
                 </div>
                 <!-- /.row -->

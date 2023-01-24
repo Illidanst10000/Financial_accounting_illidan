@@ -1,4 +1,4 @@
-@extends('admin.layouts.main')
+@extends('layouts.main')
 
 @section('content')
     <!-- Content Wrapper. Contains page content -->
@@ -31,7 +31,7 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form action="{{route('admin.spendings.store')}}" method="POST">
+                        <form action="{{route('user.spendings.store')}}" method="POST">
                             @csrf
                             <div class="card-body">
                                 <div class="form-group">
@@ -67,6 +67,14 @@
                                             style="width: 100%;">
                                         @foreach($tags as $tag)
                                             <option {{is_array( old('tag_ids')) && in_array($tag->id, old('tag_ids')) ? ' selected' : ''}} value="{{ $tag->id }}">{{ $tag->title }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Type</label>
+                                    <select class="form-control" name="type_id">
+                                        @foreach($types as $id => $type)
+                                            <option value="{{ $id }}">{{ $type}}</option>
                                         @endforeach
                                     </select>
                                 </div>

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Spendings;
+namespace App\Http\Controllers\User\Spendings;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
@@ -15,7 +15,7 @@ class EditController extends BaseController
     {
         $categories = Category::all();
         $tags = Tag::all();
-
-        return view('admin.spendings.edit', compact('spending', 'categories', 'tags'));
+        $types = Type::getTypes();
+        return view('user.spendings.edit', compact('spending', 'categories', 'tags', 'types'));
     }
 }

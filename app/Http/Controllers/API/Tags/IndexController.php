@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\User\Tags;
+namespace App\Http\Controllers\API\Tags;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
@@ -18,6 +18,7 @@ class IndexController extends Controller
         $tags = DB::table('tags')
             ->join('user_tags', 'tags.id', '=', 'user_tags.tag_id')
             ->where('user_id', '=', $userId)->get();
-        return view('user.tags.index', compact('tags'));
+
+        return response()->json($tags);
     }
 }

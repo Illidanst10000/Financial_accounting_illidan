@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Spendings;
+namespace App\Http\Controllers\User\Spendings;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
@@ -13,6 +13,6 @@ class ShowController extends BaseController
 {
     public function __invoke(Spending $spending)
     {
-        return view('admin.spendings.show', compact('spending'));
+        return view('user.spendings.show', compact('spending'));
     }
 }

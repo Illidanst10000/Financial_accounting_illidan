@@ -27,7 +27,7 @@ class StoreRequest extends FormRequest
             'amount' => 'required|integer',
             'date' => 'required|string',
             'source_id' => 'required|integer|exists:sources,id',
-            'type_id' => 'required|integer|exists:types,id',
+            'type_id' => 'required|integer',
             'description' => 'nullable|string',
         ];
     }

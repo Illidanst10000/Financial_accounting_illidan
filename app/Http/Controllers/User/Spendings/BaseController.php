@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Spendings;
+namespace App\Http\Controllers\User\Spendings;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;

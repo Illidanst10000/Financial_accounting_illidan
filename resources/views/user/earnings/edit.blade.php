@@ -1,4 +1,4 @@
-@extends('admin.layouts.main')
+@extends('layouts.main')
 
 @section('content')
     <!-- Content Wrapper. Contains page content -->
@@ -32,7 +32,7 @@
                         <!-- /.card-header -->
                         <!-- form start -->
 
-                        <form action="{{route('admin.earnings.update', $earning->id)}}" method="POST">
+                        <form action="{{route('user.earnings.update', $earning->id)}}" method="POST">
                             @csrf
                             @method('PATCH')
                             <div class="card-body">
@@ -67,9 +67,9 @@
                                 <div class="form-group">
                                     <label>Type</label>
                                     <select class="form-control" name="type_id">
-                                        @foreach($types as $type)
+                                        @foreach($types as $id => $type)
                                             <option
-                                                value="{{ $type->id }}" {{$type->id == $earning->type_id ? ' selected' : ''}}>{{ $type->title }}</option>
+                                                value="{{ $id }}" {{$id == $earning->type_id ? ' selected' : ''}}>{{ $type }}</option>
                                         @endforeach
                                     </select>
                                 </div>

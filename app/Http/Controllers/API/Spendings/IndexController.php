@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\User\Spendings;
+namespace App\Http\Controllers\API\Spendings;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
@@ -10,7 +10,7 @@ use App\Models\Tag;
 use App\Models\Type;
 use Illuminate\Support\Facades\DB;
 
-class IndexController extends BaseController
+class IndexController extends Controller
 {
     public function __invoke()
     {
@@ -20,6 +20,6 @@ class IndexController extends BaseController
             ->join('user_spendings', 'spendings.id', '=', 'user_spendings.spending_id')
             ->where('user_id', '=', $userId)->get();
 
-        return view('user.spendings.index', compact('spendings'));
+        return response()->json($spendings);
     }
 }

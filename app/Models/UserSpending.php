@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class UserSpending extends Model
 {
     use HasFactory;
-    use SoftDeletes;
+
 
     protected $table = 'user_spendings';
     protected $guarded = false;

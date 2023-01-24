@@ -8,7 +8,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Categories</h1>
+                        <h1 class="m-0">Users</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -27,23 +27,41 @@
                 <div class="row">
                     <div class="card card-primary col-4">
                         <div class="card-header mt-3">
-                            <h3 class="card-title">Update category</h3>
+                            <h3 class="card-title">Update user</h3>
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form action="{{route('admin.categories.update', $category->id)}}" method="POST">
+                        <form action="{{route('admin.users.update', $user->id)}}" method="POST">
                             @csrf
                             @method('PATCH')
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Type's name</label>
-                                    <input type="text" class="form-control" placeholder="Enter name" name="title"
-                                    value="{{$category->title}}">
-                                    @error('title')
+                                    <label for="exampleInputEmail1">User name</label>
+                                    <input type="text" value="{{$user->name}}" class="form-control" placeholder="Enter name" name="name">
+                                    @error('name')
                                     <div class="text-danger mt-2">You have to fill this input</div>
                                     @enderror
                                 </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">User email</label>
+                                    <input type="text" value="{{$user->email}}" class="form-control" placeholder="Enter email" name="email">
+                                    @error('email')
+                                    <div class="text-danger mt-2">You have to fill this input</div>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
+                                    <label>Role</label>
+                                    <select class="form-control" name="role">
+                                        @foreach($roles as $id => $role)
+                                            <option value="{{ $id }}" {{ $id == $user->role ? ' selected' : '' }}>{{ $role }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <input type="hidden" name="user_id" value="{{$user->id}}">
+                                </div>
                             </div>
+
                             <!-- /.card-body -->
 
                             <div class="card-footer mb-3">

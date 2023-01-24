@@ -1,20 +1,43 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Categories;
+namespace App\Http\Controllers\Admin\Users;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\Categories\StoreRequest;
+use App\Http\Requests\Admin\Users\StoreRequest;
 use App\Models\Category;
 use App\Models\Source;
 use App\Models\Type;
+use App\Models\User;
+use App\Models\UserBalance;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class StoreController extends Controller
 {
     public function __invoke(StoreRequest $request)
     {
         $data = $request->validated();
-        Category::firstOrCreate($data);
 
-        return redirect()->route('admin.categories.index');
+        try {
+            DB::beginTransaction();
+            $data['password'] = Hash::make($data['password']);
+
+            $user = User::firstOrCreate(['email' => $data['email']], $data);
+
+            $types = Type::getTypes();
+
+            foreach ($types as $id => $type) {
+                UserBalance::firstOrcreate(['user_id' => $user->id, 'balance' => 0, 'type_id' => $id]);
+            }
+
+
+            DB::commit();
+        }
+        catch (\Exception $exception) {
+            DB::rollBack();
+            abort(500);
+        }
+
+        return redirect()->route('admin.users.index');
     }
 }

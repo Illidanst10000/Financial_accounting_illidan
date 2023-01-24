@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Earnings;
+namespace App\Http\Controllers\User\Earnings;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
@@ -8,12 +8,19 @@ use App\Models\Earning;
 use App\Models\Source;
 use App\Models\Tag;
 use App\Models\Type;
+use App\Models\UserEarning;
+use Illuminate\Support\Facades\DB;
 
 class IndexController extends Controller
 {
     public function __invoke()
     {
-        $earnings = Earning::all();
-        return view('admin.earnings.index', compact('earnings'));
+        $userId = auth()->user()->id;
+
+        $earnings = DB::table('earnings')
+            ->join('user_earnings', 'earnings.id', '=', 'user_earnings.earning_id')
+            ->where('user_id', '=', $userId)->get();
+
+        return view('user.earnings.index', compact('earnings'));
     }
 }
