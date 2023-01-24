@@ -3,6 +3,9 @@
 namespace App\Http\Requests\API\Earnings;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\ValidationException;
+use Illuminate\Http\Response;
+use Illuminate\Validation\Validator;
 
 class UpdateRequest extends FormRequest
 {
@@ -24,7 +27,7 @@ class UpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'amount' => 'required|integer',
+            'amount' => 'nullable|integer',
             'date' => 'nullable|string',
             'source_id' => 'nullable|string|exists:sources,title',
             'type_id' => 'nullable|string',
@@ -32,13 +35,4 @@ class UpdateRequest extends FormRequest
         ];
     }
 
-    public function messages()
-    {
-        return [
-
-            'amount.integer' => 'xyi',
-            'amount.required' => 'xyi1',
-            'amount' => 'xyi2',
-        ];
-    }
 }

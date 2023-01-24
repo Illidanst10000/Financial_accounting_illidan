@@ -14,7 +14,7 @@ class StoreController extends Controller
     public function __invoke(StoreRequest $request)
     {
         $data = $request->validated();
-
+        dd($data);
         try {
             DB::beginTransaction();
 

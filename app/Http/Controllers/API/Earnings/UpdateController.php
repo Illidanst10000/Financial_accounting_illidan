@@ -3,18 +3,21 @@
 namespace App\Http\Controllers\API\Earnings;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\User\Earnings\UpdateRequest;
+use App\Http\Requests\API\Earnings\UpdateRequest;
 use App\Models\Earning;
 use App\Models\Source;
 use App\Models\Type;
 use Illuminate\Support\Facades\DB;
 
+
 class UpdateController extends Controller
 {
     public function __invoke(UpdateRequest $request, Earning $earning)
     {
-        $data = $request->validated();
+            $data = $request->validated();
         dd($data);
+
+
         try {
             DB::beginTransaction();
 
@@ -39,7 +42,7 @@ class UpdateController extends Controller
                 ->where('type_id', '=', $earning['type_id'])
                 ->where('user_id', '=', $userId)
                 ->increment('balance', $data['amount'] - $earning['amount']);
-            dd(1);
+
             DB::commit();
 
         }
@@ -47,5 +50,7 @@ class UpdateController extends Controller
             DB::rollBack();
             abort(500);
         }
+
+        return response($earning);
     }
 }
