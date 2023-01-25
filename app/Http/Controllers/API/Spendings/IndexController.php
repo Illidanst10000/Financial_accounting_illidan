@@ -18,8 +18,11 @@ class IndexController extends Controller
 
         $spendings = DB::table('spendings')
             ->join('user_spendings', 'spendings.id', '=', 'user_spendings.spending_id')
-            ->where('user_id', '=', $userId)->get();
+            ->where('user_id', '=', $userId)
+            ->get();
 
         return response()->json($spendings);
+
+        // Todo make show and index in every api controller with good for understanding style for categories, types, tags
     }
 }

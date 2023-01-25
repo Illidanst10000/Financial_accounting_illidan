@@ -8,12 +8,31 @@ use App\Models\Earning;
 use App\Models\Source;
 use App\Models\Tag;
 use App\Models\Type;
+use Illuminate\Support\Facades\DB;
 
 class DeleteController extends Controller
 {
     public function __invoke(Earning $earning)
     {
-        $earning->delete();
-        return redirect()->route('user.earnings.index');
+        try {
+            DB::beginTransaction();
+
+            $earning->delete();
+
+            $userId = auth()->user()->id;
+
+            DB::table('user_balances')
+                ->where('type_id', '=', $earning['type_id'])
+                ->where('user_id', '=', $userId)
+                ->decrement('balance', $earning['amount']);
+
+            DB::commit();
+        }
+        catch (\Exception $exception) {
+            DB::rollBack();
+            abort(500);
+        }
+
+        return response(200);
     }
 }

@@ -14,6 +14,7 @@ class UserBalance extends Model
     protected $guarded = false;
 
     // TODO: i have to know is that right or its shit
+
     public function incrementBalance($typeId, $userId, $amount) {
         DB::table('user_balances')
             ->where('type_id', '=', $typeId)

@@ -20,7 +20,6 @@ class StoreController extends Controller
 
             $userId = auth()->user()->id;
 
-
             $source_id = Source::where('title', $data['source_id'])->first()->id;
             $data['source_id'] = $source_id;
 

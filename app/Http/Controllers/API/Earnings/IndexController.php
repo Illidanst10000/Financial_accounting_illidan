@@ -19,8 +19,11 @@ class IndexController extends Controller
 
        $earnings = DB::table('earnings')
            ->join('user_earnings', 'earnings.id', '=', 'user_earnings.earning_id')
-            ->where('user_id', '=', $userId)->get();
+           ->where('user_id', '=', $userId)
+           ->get();
 
         return response()->json($earnings);
     }
+
+    // TODO have to make api documentation
 }

@@ -43,12 +43,18 @@ Route::group(['middleware' => 'api'], function () {
 
     Route::group(['prefix' => 'tags'], function () {
         Route::get('/', \App\Http\Controllers\API\Tags\IndexController::class)->name('api.tags.index');
-        Route::get('/create', \App\Http\Controllers\API\Tags\CreateController::class)->name('api.tags.create');
         Route::post('/', \App\Http\Controllers\API\Tags\StoreController::class)->name('api.tags.store');
         Route::get('/{tag}', \App\Http\Controllers\API\Tags\ShowController::class)->name('api.tags.show');
-        Route::get('/{tag}/edit', \App\Http\Controllers\API\Tags\EditController::class)->name('api.tags.edit');
         Route::patch('/{tag}', \App\Http\Controllers\API\Tags\UpdateController::class)->name('api.tags.update');
         Route::delete('/{tag}', \App\Http\Controllers\API\Tags\DeleteController::class)->name('api.tags.delete');
+    });
+
+    Route::group(['prefix' => 'transfers'], function () {
+        Route::post('/', \App\Http\Controllers\API\Transfers\StoreController::class)->name('api.transfers.store');
+    });
+
+    Route::group(['prefix' => 'balances'], function () {
+        Route::get('/', \App\Http\Controllers\API\Balances\IndexController::class)->name('api.balances.store');
     });
 });
 

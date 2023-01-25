@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\API\Tags;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\User\Tags\UpdateRequest;
+use App\Http\Requests\API\Tags\UpdateRequest;
 use App\Models\Category;
 use App\Models\Source;
 use App\Models\Tag;
@@ -16,6 +16,6 @@ class UpdateController extends Controller
         $data = $request->validated();
         $tag->update($data);
 
-        return redirect()->route('user.tags.show', compact('tag'));
+        return response($tag);
     }
 }

@@ -17,7 +17,7 @@ class UpdateController extends Controller
     public function __invoke(UpdateRequest $request, Earning $earning)
     {
 
-            $data = $request->validated();
+        $data = $request->validated();
 
         try {
             DB::beginTransaction();

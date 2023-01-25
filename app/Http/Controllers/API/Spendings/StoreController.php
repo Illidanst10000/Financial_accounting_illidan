@@ -24,10 +24,12 @@ class StoreController extends Controller
             $category_id = Category::where('title', $data['category_id'])->first()->id;
             $data['category_id'] = $category_id;
 
+            // Todo why I made that? people do not gonna fill inputs by hands, have to change like normal functional
             $types = Type::getTypes();
             $types = array_flip($types);
             $data['type_id'] = $types[$data['type_id']];
 
+            // Todo have to change explode tags to get array in request. dont use body-form data anymore, only json
             if (isset($data['tag_ids'])) {
 
                 $tags = explode(',', $data['tag_ids']);
@@ -63,6 +65,7 @@ class StoreController extends Controller
             abort(500);
         }
 
+        // TODO have to make exception and respones in all api controller
         return response($spending);
     }
 }

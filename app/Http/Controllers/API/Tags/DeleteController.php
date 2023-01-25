@@ -14,9 +14,6 @@ class DeleteController extends Controller
     {
         $tag->delete();
 
-        $userId = auth()->user()->id;
-        $tag->userTags()->delete($userId);
-
         return response(200);
     }
 }

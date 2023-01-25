@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\API\Spendings;
+namespace App\Http\Requests\API\Tags;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -24,13 +24,7 @@ class UpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'amount' => 'nullable|integer',
-            'date' => 'nullable|string',
-            'category_id' => 'nullable|string|exists:categories,title',
-            'tag_ids' => 'nullable|array',
-            'tag_ids.*' => 'nullable|string|exists:tags,title',
-            'type_id' => 'nullable|string',
-            'description' => 'nullable|string',
+            'title' => 'required|string'
         ];
     }
 }

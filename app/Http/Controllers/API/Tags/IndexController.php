@@ -17,7 +17,8 @@ class IndexController extends Controller
 
         $tags = DB::table('tags')
             ->join('user_tags', 'tags.id', '=', 'user_tags.tag_id')
-            ->where('user_id', '=', $userId)->get();
+            ->where('user_id', '=', $userId)
+            ->get();
 
         return response()->json($tags);
     }

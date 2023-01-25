@@ -10,7 +10,6 @@ class Type extends Model
 {
     use HasFactory;
 
-
     const TYPE_DEBIT = 0;
     const TYPE_CREDIT = 1;
     const TYPE_CASH = 2;

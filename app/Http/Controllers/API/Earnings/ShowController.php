@@ -16,12 +16,12 @@ class ShowController extends Controller
     {
         $userId = auth()->user()->id;
 
-        $earnings = DB::table('earnings')
+        $earning = DB::table('earnings')
             ->join('user_earnings', 'earnings.id', '=', 'user_earnings.earning_id')
             ->where('user_id', '=', $userId)
             ->where('earning_id', '=', $earning->id)
             ->get();
 
-        return response()->json($earnings);
+        return response()->json($earning);
     }
 }
