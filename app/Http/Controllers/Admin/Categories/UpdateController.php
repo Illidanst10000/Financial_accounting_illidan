@@ -1,20 +1,19 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Categories;
+namespace App\Http\Controllers\Admin\Types;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\Categories\UpdateRequest;
-use App\Models\Category;
+use App\Http\Requests\Admin\Types\UpdateRequest;
 use App\Models\Source;
 use App\Models\Type;
 
 class UpdateController extends Controller
 {
-    public function __invoke(UpdateRequest $request, Category $category)
+    public function __invoke(UpdateRequest $request, Type $type)
     {
         $data = $request->validated();
-        $category->update($data);
+        $type->update($data);
 
-        return redirect()->route('admin.categories.show', compact('category'));
+        return redirect()->route('admin.types.show', compact('type'));
     }
 }

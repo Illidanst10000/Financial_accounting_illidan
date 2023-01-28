@@ -1,16 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Categories;
+namespace App\Http\Controllers\Admin\Types;
 
 use App\Http\Controllers\Controller;
-use App\Models\Category;
 use App\Models\Source;
 use App\Models\Type;
 
 class EditController extends Controller
 {
-    public function __invoke(Category $category)
+    public function __invoke(Type $type)
     {
-        return view('admin.categories.edit', compact('category'));
+        return view('admin.types.edit', compact('type'));
     }
 }

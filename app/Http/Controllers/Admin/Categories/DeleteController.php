@@ -1,17 +1,16 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Categories;
+namespace App\Http\Controllers\Admin\Types;
 
 use App\Http\Controllers\Controller;
-use App\Models\Category;
 use App\Models\Source;
 use App\Models\Type;
 
 class DeleteController extends Controller
 {
-    public function __invoke(Category $category)
+    public function __invoke(Type $type)
     {
-        $category->delete();
-        return redirect()->route('admin.categories.index');
+        $type->delete();
+        return redirect()->route('admin.types.index');
     }
 }

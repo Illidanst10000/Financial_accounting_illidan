@@ -21,8 +21,9 @@ return new class extends Migration
             $table->date('date');
 
             $table->foreignId('category_id')->constrained();
-            $table->unsignedSmallInteger('type_id');
+            $table->foreignId('tag_id')->constrained();
 
+            $table->softDeletes();
             $table->timestamps();
         });
     }
