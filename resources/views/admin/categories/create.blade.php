@@ -8,7 +8,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Types</h1>
+                        <h1 class="m-0">Categories</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -27,15 +27,15 @@
                 <div class="row">
                     <div class="card card-primary col-4">
                         <div class="card-header mt-3">
-                            <h3 class="card-title">Create type</h3>
+                            <h3 class="card-title">Create category</h3>
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form action="{{route('admin.types.store')}}" method="POST">
+                        <form action="{{route('admin.categories.store')}}" method="POST">
                             @csrf
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Type's name</label>
+                                    <label for="exampleInputEmail1">Category name</label>
                                     <input type="text" class="form-control" placeholder="Enter name" name="title">
                                     @error('title')
                                     <div class="text-danger mt-2">You have to fill this input</div>

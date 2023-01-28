@@ -8,7 +8,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Categories</h1>
+                        <h1 class="m-0">Tags</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -26,7 +26,7 @@
                 <!-- Info boxes -->
                 <div class="row d-flex flex-column">
                     <div class="col-2 mb-3">
-                        <a href="{{route('admin.categories.create')}}" class="btn btn-block btn-success">Create Category</a>
+                        <a href="{{route('admin.tags.create')}}" class="btn btn-block btn-success">Create Tag</a>
                     </div>
                     <div class="card w-25 ml-2">
 
@@ -40,16 +40,16 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($categories as $category)
+                                @foreach($tags as $tag)
                                     <tr>
-                                        <td>{{$category->id}}</td>
-                                        <td>{{$category->title}}</td>
-                                        <td><a href="{{ route('admin.categories.show', $category->id) }}"><i
+                                        <td>{{$tag->id}}</td>
+                                        <td>{{$tag->title}}</td>
+                                        <td><a href="{{ route('admin.tags.show', $tag->id) }}"><i
                                                     class="far fa-eye"></i></a></td>
-                                        <td><a href="{{ route('admin.categories.edit', $category->id) }}"
+                                        <td><a href="{{ route('admin.tags.edit', $tag->id) }}"
                                                class="text-success"><i class="fas fa-pencil-alt"></i></a></td>
                                         <td>
-                                            <form action="{{route('admin.categories.delete', $category->id)}}" method="POST">
+                                            <form action="{{route('admin.tags.delete', $tag->id)}}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="border-0 bg-transparent">

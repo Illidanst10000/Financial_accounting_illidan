@@ -25,30 +25,24 @@
             <div class="container-fluid">
                 <!-- Info boxes -->
                 <div class="row d-flex flex-column">
-                    <div class="col-2 mb-3">
-                        <a href="{{route('admin.sources.create')}}" class="btn btn-block btn-success">Create Source</a>
-                    </div>
+
                     <div class="card w-25 ml-2">
 
                         <div class="card-body p-0">
                             <table class="table table-sm">
-                                <thead>
-                                <tr>
-                                    <th style="width: 10px">#</th>
-                                    <th>Name</th>
-                                    <th>Action</th>
-                                </tr>
-                                </thead>
+
                                 <tbody>
-                                @foreach($sources as $source)
+
+                                    <tr>
+                                        <td>ID</td>
+                                        <td>Name</td>
+                                    </tr>
+
                                     <tr>
                                         <td>{{$source->id}}</td>
                                         <td>{{$source->title}}</td>
-                                        <td><a href=""><i class="far fa-eye"></i></a></td>
-                                        <td><a href=""><i class="fas fa-pencil-alt"></i></a></td>
-                                        <td><a href=""><i class="fas fa-trash"></i></a></td>
                                     </tr>
-                                @endforeach
+
 
                                 </tbody>
                             </table>

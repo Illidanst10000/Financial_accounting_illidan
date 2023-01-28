@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Categories;
+namespace App\Http\Controllers\Admin\Tags;
 
 use App\Http\Controllers\Controller;
 
@@ -8,6 +8,6 @@ class CreateController extends Controller
 {
     public function __invoke()
     {
-        return view('admin.categories.create');
+        return view('admin.tags.create');
     }
 }
