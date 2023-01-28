@@ -1,10 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Categories;
+namespace App\Http\Controllers\Admin\Types;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\Categories\StoreRequest;
-use App\Models\Category;
+use App\Http\Requests\Admin\Types\StoreRequest;
 use App\Models\Source;
 use App\Models\Type;
 
@@ -13,8 +12,8 @@ class StoreController extends Controller
     public function __invoke(StoreRequest $request)
     {
         $data = $request->validated();
-        Category::firstOrCreate($data);
+        Type::firstOrCreate($data);
 
-        return redirect()->route('admin.categories.index');
+        return redirect()->route('admin.types.index');
     }
 }

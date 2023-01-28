@@ -24,9 +24,30 @@
         <section class="content">
             <div class="container-fluid">
                 <!-- Info boxes -->
-                <div class="row">
-                    <div class="col-1">
-                        <a href="" class="btn btn-block btn-success"></a>
+                <div class="row d-flex flex-column">
+
+                    <div class="card w-25 ml-2">
+
+                        <div class="card-body p-0">
+                            <table class="table table-sm">
+
+                                <tbody>
+
+                                    <tr>
+                                        <td>ID</td>
+                                        <td>Name</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>{{$source->id}}</td>
+                                        <td>{{$source->title}}</td>
+                                    </tr>
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.card-body -->
                     </div>
                 </div>
                 <!-- /.row -->

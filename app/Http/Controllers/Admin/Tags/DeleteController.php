@@ -1,21 +1,17 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Tags;
+namespace App\Http\Controllers\Admin\Categories;
 
 use App\Http\Controllers\Controller;
-
-
-use App\Models\Tag;
-
-use App\Models\UserTag;
-use Illuminate\Support\Facades\DB;
+use App\Models\Category;
+use App\Models\Source;
+use App\Models\Type;
 
 class DeleteController extends Controller
 {
-    public function __invoke(Tag $tag)
+    public function __invoke(Category $category)
     {
-        $tag->delete();
-
-        return redirect()->route('admin.tags.index');
+        $category->delete();
+        return redirect()->route('admin.categories.index');
     }
 }

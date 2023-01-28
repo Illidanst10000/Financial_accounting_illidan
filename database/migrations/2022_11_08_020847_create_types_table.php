@@ -13,15 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('earnings', function (Blueprint $table) {
+        Schema::create('types', function (Blueprint $table) {
             $table->id();
 
-            $table->integer('amount');
-            $table->string('description')->nullable();
-            $table->date('date');
-
-            $table->foreignId('source_id')->constrained();
-            $table->foreignId('type_id')->constrained();
+            $table->string('title');
 
             $table->softDeletes();
             $table->timestamps();
@@ -35,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('earnings');
+        Schema::dropIfExists('types');
     }
 };
