@@ -13,7 +13,7 @@ class UserBalance extends Model
     protected $table = 'user_balances';
     protected $guarded = false;
 
-    // TODO: i have to know is that right or its shit
+    // TODO: I want to know is that right way to do this in model
 
     public function incrementBalance($typeId, $userId, $amount) {
         DB::table('user_balances')

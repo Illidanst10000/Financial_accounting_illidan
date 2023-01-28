@@ -23,29 +23,9 @@ class UpdateController extends Controller
 
             $userId = auth()->user()->id;
 
-            if (isset($data['category_id']))
-            {
-                $category_id = Category::where('title', $data['category_id'])->first()->id;
-                $data['category_id'] = $category_id;
-            }
-
-            if (isset($data['tag_ids']))
-            {
-                $tags = $data['tag_ids'];
+            if (isset($data['tag_ids'])) {
+                $tagIds = $data['tag_ids'];
                 unset($data['tag_ids']);
-
-                foreach ($tags as $tag_num => $tag)
-                {
-                    $tag_id = Tag::where('title', $tag)->first()->id;
-                    $tags[$tag_num] = $tag_id;
-                }
-            }
-
-            if (isset($data['type_id']))
-            {
-                $types = Type::getTypes();
-                $types = array_flip($types);
-                $data['type_id'] = $types[$data['type_id']];
             }
 
             $spending->update($data);

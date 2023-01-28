@@ -23,6 +23,6 @@ class IndexController extends Controller
 
         return response()->json($spendings);
 
-        // Todo make show and index in every api controller with good for understanding style for categories, types, tags
+
     }
 }

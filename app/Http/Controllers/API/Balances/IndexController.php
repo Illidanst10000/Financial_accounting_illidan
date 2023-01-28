@@ -24,10 +24,9 @@ class IndexController extends Controller
             ->get()
             ->toArray();
 
-
         foreach ($types as $type_id => $type)
         {
-                    $balances[$type_id]->type_id = $type;
+            $balances[$type_id]->type_id = $type;
         }
 
         return response()->json($balances);

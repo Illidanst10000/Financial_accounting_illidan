@@ -26,8 +26,8 @@ class StoreRequest extends FormRequest
         return [
             'amount' => 'required|integer',
             'date' => 'required|string',
-            'source_id' => 'required|string|exists:sources,title',
-            'type_id' => 'required|string',
+            'source_id' => 'required|integer|exists:sources,id',
+            'type_id' => 'required|integer',
             'description' => 'nullable|string',
         ];
     }

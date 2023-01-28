@@ -29,8 +29,8 @@ class UpdateRequest extends FormRequest
         return [
             'amount' => 'nullable|integer',
             'date' => 'nullable|string',
-            'source_id' => 'nullable|string|exists:sources,title',
-            'type_id' => 'nullable|string',
+            'source_id' => 'nullable|integer|exists:sources,id',
+            'type_id' => 'nullable|integer',
             'description' => 'nullable|string',
         ];
     }

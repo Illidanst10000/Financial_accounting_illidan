@@ -21,26 +21,9 @@ class StoreController extends Controller
         try {
             DB::beginTransaction();
 
-            $category_id = Category::where('title', $data['category_id'])->first()->id;
-            $data['category_id'] = $category_id;
-
-            // Todo why I made that? people do not gonna fill inputs by hands, have to change like normal functional
-            $types = Type::getTypes();
-            $types = array_flip($types);
-            $data['type_id'] = $types[$data['type_id']];
-
-            // Todo have to change explode tags to get array in request. dont use body-form data anymore, only json
             if (isset($data['tag_ids'])) {
-
-                $tags = explode(',', $data['tag_ids']);
+                $tagIds = $data['tag_ids'];
                 unset($data['tag_ids']);
-                $tagIds = [];
-
-                foreach ($tags as $tag)
-                {
-                    $tag_id = Tag::where('title', $tag)->first()->id;
-                    $tagIds[$tag] = $tag_id;
-                }
             }
 
             $spending = Spending::firstOrCreate($data);

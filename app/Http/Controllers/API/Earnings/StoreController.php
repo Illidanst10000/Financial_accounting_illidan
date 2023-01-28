@@ -20,13 +20,6 @@ class StoreController extends Controller
 
             $userId = auth()->user()->id;
 
-            $source_id = Source::where('title', $data['source_id'])->first()->id;
-            $data['source_id'] = $source_id;
-
-            $types = Type::getTypes();
-            $types = array_flip($types);
-            $data['type_id'] = $types[$data['type_id']];
-
             $earning = Earning::firstOrCreate($data);
             $earning->userEarnings()->attach($userId);
 
