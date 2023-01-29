@@ -11,11 +11,50 @@ use App\Models\Tag;
 use App\Models\Type;
 use Illuminate\Support\Facades\DB;
 
-class UpdateController extends BaseController
+class UpdateController extends Controller
 {
+    /**
+     * @OA\PATCH (
+     * path="/spendings/{id}",
+     * operationId="spendingUpdate",
+     * summary="Update Spending",
+     * tags={"Spendings"},
+     * description="Update Spending by ID",
+     *     @OA\Parameter (
+     *          name="id",
+     *          in="path",
+     *          description="Spending ID",
+     *          required=true,
+     *            @OA\Schema(
+     *               type="integer",
+     *               required={"id"},
+     *        ),
+     *     ),
+     *     @OA\RequestBody(
+     *            @OA\MediaType(
+     *            mediaType="multipart/form-data",
+     *            @OA\Schema(
+     *               type="object",
+     *
+     *               @OA\Property(property="amount", type="integer", example="100"),
+     *               @OA\Property(property="date", type="date", example="2023-01-28"),
+     *               @OA\Property(property="category_id", type="id", example="1"),
+     *               @OA\Property(property="type_id", type="id", example="1"),
+     *               @OA\Property(property="tag_ids", type="array", @OA\Items(), example="[""McDonalds"", ""BurgerKing"", ""KFC""]"),
+     *               @OA\Property(property="description", type="string", example="Example description"),
+     *            ),
+     *        ),
+     *    ),
+     *      @OA\Response(
+     *          response=201,
+     *          description="Updated Successfully",
+     *          @OA\JsonContent()
+     *       ),
+     * )
+     */
+
     public function __invoke(UpdateRequest $request, Spending $spending)
     {
-
 
         $data = $request->validated();
 
@@ -68,7 +107,8 @@ class UpdateController extends BaseController
             abort(500);
         }
 
-        return response($spending);
+
+        return response($spending, 201);
 
     }
 }

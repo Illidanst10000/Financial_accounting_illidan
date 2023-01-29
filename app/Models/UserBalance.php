@@ -6,8 +6,27 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
+/**
+ * @OA\Schema(type="object"),
+ */
+
 class UserBalance extends Model
 {
+    /**
+     *  @OA\Property(
+     *      property="user_id",
+     *      type="id",
+     *  ),
+     *  @OA\Property(
+     *      property="balance",
+     *      type="integer",
+     *  ),
+     *  @OA\Property(
+     *      property="type_id",
+     *      type="integer",
+     *  ),
+     */
+
     use HasFactory;
 
     protected $table = 'user_balances';

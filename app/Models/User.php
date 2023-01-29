@@ -2,13 +2,38 @@
 
 namespace App\Models;
 
+
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable
+/**
+ * @OA\Schema(type="object"),
+ */
+
+class User extends Authenticatable implements JWTSubject
+
 {
+    /**
+     *  @OA\Property(
+     *      property="name",
+     *      type="string",
+     *  ),
+     *  @OA\Property(
+     *      property="email",
+     *      type="email",
+     *  ),
+     *  @OA\Property(
+     *      property="password",
+     *      type="password",
+     *  ),
+     *  @OA\Property(
+     *      property="role",
+     *      type="integer",
+     *  ),
+     */
+
     use HasApiTokens, HasFactory, Notifiable;
 
     const ROLE_USER = 0;

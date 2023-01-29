@@ -3,15 +3,35 @@
 namespace App\Http\Controllers\API\Spendings;
 
 use App\Http\Controllers\Controller;
-use App\Models\Category;
-use App\Models\Source;
-use App\Models\Spending;
-use App\Models\Tag;
-use App\Models\Type;
 use Illuminate\Support\Facades\DB;
 
-class IndexController extends BaseController
+
+/**
+ * @OA\Tag(
+ *     name="Spendings",
+ * )
+ */
+
+class IndexController extends Controller
+
 {
+    /**
+     * @OA\Get(
+     *     path="/spendings",
+     *     operationId="spendingsList",
+     *     tags={"Spendings"},
+     *     summary="Get list of spendings",
+     *     description="Get spendings",
+     *     @OA\Response(
+     *         response="200",
+     *         description="Everything is fine",
+     *
+     *     @OA\JsonContent()
+     *     ),
+     * )
+     *
+     */
+
     public function __invoke()
     {
         $userId = auth()->user()->id;
@@ -21,9 +41,6 @@ class IndexController extends BaseController
             ->where('user_id', '=', $userId)
             ->get();
 
-        return response()->json($spendings);
-
-        // Todo make show and index in every api controller with good for understanding style for categories, types, tags
-
+        return response()->json($spendings, 200);
     }
 }

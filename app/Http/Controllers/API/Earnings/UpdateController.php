@@ -11,12 +11,58 @@ use App\Models\Tag;
 use App\Models\Type;
 use Illuminate\Support\Facades\DB;
 
+
+/**
+ * @OA\Tag(
+ *     name="Earnings",
+ * )
+ */
+
+
 class UpdateController extends Controller
 {
+    /**
+     * @OA\PATCH (
+     * path="/earnings/{id}",
+     * operationId="earningUpdate",
+     * summary="Update Earning",
+     * tags={"Earnings"},
+     * description="Update Earning by ID",
+     *     @OA\Parameter (
+     *          name="id",
+     *          in="path",
+     *          description="Earning ID",
+     *          required=true,
+     *            @OA\Schema(
+     *               type="integer",
+     *               required={"id"},
+     *        ),
+     *     ),
+     *     @OA\RequestBody(
+     *            @OA\MediaType(
+     *            mediaType="multipart/form-data",
+     *            @OA\Schema(
+     *               type="object",
+     *
+     *               @OA\Property(property="amount", type="integer", example="100"),
+     *               @OA\Property(property="date", type="date", example="2023-01-28"),
+     *               @OA\Property(property="source_id", type="id", example="1"),
+     *               @OA\Property(property="type_id", type="id", example="1"),
+     *               @OA\Property(property="description", type="string", example="Example description"),
+     *            ),
+     *        ),
+     *    ),
+     *      @OA\Response(
+     *          response=201,
+     *          description="Updated Successfully",
+     *          @OA\JsonContent()
+     *       ),
+     * )
+     */
+
     public function __invoke(UpdateRequest $request, Earning $earning)
     {
         $data = $request->validated();
-        $userId = auth()->user()->id;
 
         try {
             DB::beginTransaction();
@@ -51,7 +97,7 @@ class UpdateController extends Controller
             abort(500);
         }
 
-        return response($earning);
+        return response($earning, 201);
 
     }
 }
