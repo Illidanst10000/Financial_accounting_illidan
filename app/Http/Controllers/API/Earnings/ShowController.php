@@ -46,7 +46,6 @@ class ShowController extends Controller
 
     public function __invoke(Earning $earning)
     {
-
         $userId = auth()->user()->id;
 
         $earning = DB::table('earnings')
@@ -56,6 +55,5 @@ class ShowController extends Controller
             ->get();
 
         return response()->json($earning, 200);
-
     }
 }

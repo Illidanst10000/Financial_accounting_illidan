@@ -47,8 +47,6 @@ class DeleteController extends Controller
     public function __invoke(Tag $tag)
     {
         $tag->delete();
-
         return response(204);
-
     }
 }

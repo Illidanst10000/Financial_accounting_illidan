@@ -6,25 +6,39 @@
     <title>AdminLTE 3 | Dashboard 2</title>
 
     <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet" href="{{ asset('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback') }}">
+
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
+    <link rel="stylesheet" href="{{asset('plugins/fontawesome-free/css/all.min.css')}}">
+    <link rel="stylesheet" href=" {{asset('plugins/select2/css/select2.min.css')}} ">
+    <link rel="stylesheet" href=" {{asset('plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css')}} ">
     <!-- overlayScrollbars -->
-    <link rel="stylesheet" href="{{ asset('plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
+    <link rel="stylesheet" href="{{asset('plugins/overlayScrollbars/css/OverlayScrollbars.min.css')}}">
     <!-- Theme style -->
-    <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
+    <link rel="stylesheet" href="{{asset('dist/css/adminlte.min.css')}}">
+    <!-- Tempusdominus Bootstrap 4 -->
+    <link rel="stylesheet" href="{{asset('plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css')}}">
+    <!-- Dateranger Picker -->
+    <link rel="stylesheet" href="{{asset('plugins/daterangepicker/daterangepicker.css')}}">
+    <!-- Select2 -->
+    <link rel="stylesheet" href="{{asset('plugins/summernote/summernote-bs4.min.css')}}">
+
 </head>
 <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 <div class="wrapper">
 
     <!-- Preloader -->
     <div class="preloader flex-column justify-content-center align-items-center">
-        <img class="animation__wobble" src="{{asset('dist/img/AdminLTELogo.png')}}" alt="AdminLTELogo" height="60" width="60">
+
+        <img class="animation__wobble" src="{{asset('dist/img/AdminLTELogo.png')}}" alt="AdminLTELogo" height="60"
+             width="60">
     </div>
 
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand navbar-dark">
         <!-- Left navbar links -->
+
 
         <ul class="navbar-nav">
             <li class="nav-item">
@@ -56,7 +70,6 @@
                 </li>
             </ul>
         </div>
-
 
 
         <!-- Right navbar links -->
@@ -857,6 +870,11 @@
         <!-- /.sidebar -->
     </aside>
 
+    </nav>
+    <!-- /.navbar -->
+
+    @include('admin.includes.sidebar')
+
     @yield('content')
 
     <!-- Control Sidebar -->
@@ -867,24 +885,38 @@
 
     <!-- Main Footer -->
     <footer class="main-footer">
-        <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
+
+        <strong>Copyright &copy; 2022 <a href="https://t.me/illidanst10000">Finance IllidanST</a>.</strong>
         All rights reserved.
         <div class="float-right d-none d-sm-inline-block">
-            <b>Version</b> 3.2.0
+            <b>Version</b> 1.0.0
         </div>
     </footer>
 </div>
 <!-- ./wrapper -->
 
 <!-- REQUIRED SCRIPTS -->
-<!-- jQuery -->
+
+
+<!-- jQuery  -->
 <script src="{{asset('plugins/jquery/jquery.min.js')}}"></script>
+<script src="{{asset('plugins/moment/moment.min.js')}}"></script>
+<!-- date-range-picker -->
+<script src="{{ asset('plugins/daterangepicker/daterangepicker.js') }}"></script>
 <!-- Bootstrap -->
 <script src="{{asset('plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 <!-- overlayScrollbars -->
 <script src="{{asset('plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}}"></script>
 <!-- AdminLTE App -->
 <script src="{{asset('dist/js/adminlte.js')}}"></script>
+
+<!-- InputMask -->
+
+<script src="{{asset('plugins/inputmask/jquery.inputmask.min.js')}}"></script>
+<script src="{{asset('plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js')}}"></script>
+
+<!-- Select2 -->
+<script src="{{asset('plugins/select2/js/select2.full.min.js')}} "></script>
 
 <!-- PAGE PLUGINS -->
 <!-- jQuery Mapael -->
@@ -899,5 +931,34 @@
 <script src="{{asset('dist/js/demo.js')}}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{asset('dist/js/pages/dashboard2.js')}}"></script>
+
+<script src="{{asset('plugins/summernote/summernote-bs4.min.js')}}"></script>
+<script>
+    $(document).ready(function () {
+        $('#summernote').summernote({
+            toolbar: [
+                // [groupName, [list of button]]
+                ['style', ['bold', 'italic', 'underline']],
+            ]
+        });
+    });
+</script>
+
+<script>
+    $(function () {
+        $('#datetimepicker1').datetimepicker({
+            defaultDate: Date.now(),
+            format: 'YYYY/MM/DD'
+        });
+    });
+
+    $('.select2').select2()
+
+    ('.select2bs4').select2({
+        theme: 'bootstrap4'
+    })
+
+</script>
+
 </body>
 </html>

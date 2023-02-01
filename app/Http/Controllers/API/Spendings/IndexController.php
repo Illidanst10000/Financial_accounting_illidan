@@ -5,7 +5,6 @@ namespace App\Http\Controllers\API\Spendings;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 
-
 /**
  * @OA\Tag(
  *     name="Spendings",

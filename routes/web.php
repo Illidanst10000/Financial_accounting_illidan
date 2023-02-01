@@ -3,7 +3,8 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-use \App\Http\Controllers\User as User;
+// use \App\Http\Controllers\User as User;
+
 
 
 /*
@@ -23,7 +24,8 @@ use \App\Http\Controllers\User as User;
     Route::get('/', App\Http\Controllers\Main\IndexController::class)->name('main.index');
 
     Route::group(['prefix' => 'tags'], function () {
-        Route::get('/', User\Tags\IndexController::class)->name('user.tags.index');
+<
+        Route::get('/', \App\Http\Controllers\User\Tags\IndexController::class)->name('user.tags.index');
         Route::get('/create', \App\Http\Controllers\User\Tags\CreateController::class)->name('user.tags.create');
         Route::post('/', \App\Http\Controllers\User\Tags\StoreController::class)->name('user.tags.store');
         Route::get('/{tag}', \App\Http\Controllers\User\Tags\ShowController::class)->name('user.tags.show');
@@ -73,6 +75,16 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function 
         Route::delete('/{source}', \App\Http\Controllers\Admin\Sources\DeleteController::class)->name('admin.sources.delete');
     });
 
+    Route::group(['prefix' => 'tags'], function () {
+        Route::get('/', \App\Http\Controllers\Admin\Tags\IndexController::class)->name('admin.tags.index');
+        Route::get('/create', \App\Http\Controllers\Admin\Tags\CreateController::class)->name('admin.tags.create');
+        Route::post('/', \App\Http\Controllers\Admin\Tags\StoreController::class)->name('admin.tags.store');
+        Route::get('/{tag}', \App\Http\Controllers\Admin\Tags\ShowController::class)->name('admin.tags.show');
+        Route::get('/{tag}/edit', \App\Http\Controllers\Admin\Tags\EditController::class)->name('admin.tags.edit');
+        Route::patch('/{tag}', \App\Http\Controllers\Admin\Tags\UpdateController::class)->name('admin.tags.update');
+        Route::delete('/{tag}', \App\Http\Controllers\Admin\Tags\DeleteController::class)->name('admin.tags.delete');
+    });
+
     Route::group(['prefix' => 'earnings'], function () {
         Route::get('/', \App\Http\Controllers\Admin\Earnings\IndexController::class)->name('admin.earnings.index');
         Route::get('/create', \App\Http\Controllers\Admin\Earnings\CreateController::class)->name('admin.earnings.create');
@@ -91,6 +103,16 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function 
         Route::get('/{spending}/edit', \App\Http\Controllers\Admin\Spendings\EditController::class)->name('admin.spendings.edit');
         Route::patch('/{spending}', \App\Http\Controllers\Admin\Spendings\UpdateController::class)->name('admin.spendings.update');
         Route::delete('/{spending}', \App\Http\Controllers\Admin\Spendings\DeleteController::class)->name('admin.spendings.delete');
+    });
+
+    Route::group(['prefix' => 'categories'], function () {
+        Route::get('/', \App\Http\Controllers\Admin\Categories\IndexController::class)->name('admin.categories.index');
+        Route::get('/create', \App\Http\Controllers\Admin\Categories\CreateController::class)->name('admin.categories.create');
+        Route::post('/', \App\Http\Controllers\Admin\Categories\StoreController::class)->name('admin.categories.store');
+        Route::get('/{category}', \App\Http\Controllers\Admin\Categories\ShowController::class)->name('admin.categories.show');
+        Route::get('/{category}/edit', \App\Http\Controllers\Admin\Categories\EditController::class)->name('admin.categories.edit');
+        Route::patch('/{category}', \App\Http\Controllers\Admin\Categories\UpdateController::class)->name('admin.categories.update');
+        Route::delete('/{category}', \App\Http\Controllers\Admin\Categories\DeleteController::class)->name('admin.categories.delete');
     });
 
     Route::group(['prefix' => 'users'], function () {

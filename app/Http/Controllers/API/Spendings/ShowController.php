@@ -10,7 +10,6 @@ use App\Models\Tag;
 use App\Models\Type;
 use Illuminate\Support\Facades\DB;
 
-
 /**
  * @OA\Tag(
  *     name="Spendings",
@@ -18,7 +17,6 @@ use Illuminate\Support\Facades\DB;
  */
 
 class ShowController extends Controller
-
 {
     /**
      * @OA\Get(

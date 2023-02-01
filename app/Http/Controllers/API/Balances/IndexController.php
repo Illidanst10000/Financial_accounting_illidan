@@ -50,7 +50,7 @@ class IndexController extends Controller
 
         foreach ($types as $type_id => $type)
         {
-                    $balances[$type_id]->type_id = $type;
+            $balances[$type_id]->type_id = $type;
         }
 
         return response()->json($balances, 200);

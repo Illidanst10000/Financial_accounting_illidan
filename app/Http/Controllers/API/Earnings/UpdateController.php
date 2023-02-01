@@ -3,21 +3,19 @@
 namespace App\Http\Controllers\API\Earnings;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\User\Earnings\UpdateRequest;
+
 use App\Models\Category;
+use App\Http\Requests\API\Earnings\UpdateRequest;
 use App\Models\Earning;
 use App\Models\Source;
-use App\Models\Tag;
 use App\Models\Type;
 use Illuminate\Support\Facades\DB;
-
 
 /**
  * @OA\Tag(
  *     name="Earnings",
  * )
  */
-
 
 class UpdateController extends Controller
 {
@@ -62,25 +60,13 @@ class UpdateController extends Controller
 
     public function __invoke(UpdateRequest $request, Earning $earning)
     {
+
         $data = $request->validated();
 
         try {
             DB::beginTransaction();
 
             $userId = auth()->user()->id;
-
-            if (isset($data['source_id']))
-            {
-                $source_id = Source::where('title', $data['source_id'])->first()->id;
-                $data['source_id'] = $source_id;
-            }
-
-            if (isset($data['type_id']))
-            {
-                $types = Type::getTypes();
-                $types = array_flip($types);
-                $data['type_id'] = $types[$data['type_id']];
-            }
 
             $earning->update($data);
 

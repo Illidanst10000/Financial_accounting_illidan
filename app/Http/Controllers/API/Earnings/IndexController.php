@@ -21,7 +21,6 @@ class IndexController extends Controller
 {
     public function __invoke()
     {
-
         /**
          * @OA\Get(
          *     path="/earnings",
@@ -41,15 +40,12 @@ class IndexController extends Controller
 
        $userId = auth()->user()->id;
 
-
        $earnings = DB::table('earnings')
            ->join('user_earnings', 'earnings.id', '=', 'user_earnings.earning_id')
            ->where('user_id', '=', $userId)
            ->get();
 
-
         return response()->json($earnings, 200);
-
     }
 
     // TODO have to make api documentation
