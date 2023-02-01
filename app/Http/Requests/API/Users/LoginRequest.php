@@ -21,6 +21,9 @@ class LoginRequest extends FormRequest
      *
      * @return array<string, mixed>
      */
+
+    // TODO have to add more rules for work without errors (255 symbols, etc)
+
     public function rules()
     {
         return [

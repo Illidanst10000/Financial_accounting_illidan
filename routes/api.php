@@ -16,7 +16,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/login', \App\Http\Controllers\API\User\AuthController::class);
 
-Route::group(['middleware' => 'auth:sanctum'], function () {
+Route::group(['middleware' => 'api'], function () {
+
+    Route::group(['prefix' => 'auth'], function () {
+        Route::post('/login', [\App\Http\Controllers\AuthController::class, 'login']);
+        Route::post('/logout', [\App\Http\Controllers\AuthController::class, 'logout']);
+        Route::post('/refresh', [\App\Http\Controllers\AuthController::class, 'refresh']);
+        Route::post('/me', [\App\Http\Controllers\AuthController::class, 'me']);
+    });
 
     Route::group(['prefix' => 'earnings'], function () {
         Route::get('/', \App\Http\Controllers\API\Earnings\IndexController::class)->name('api.earnings.index');
@@ -52,21 +59,24 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
         Route::get('/', \App\Http\Controllers\API\Balances\IndexController::class)->name('api.balances.store');
     });
 
+    Route::group(['prefix' => 'reports'], function () {
+        Route::get('/earnings/{fromDate}/{toDate}', [\App\Http\Controllers\API\Reports\ReportController::class, 'getEarningsByDate']);
+        Route::get('/earnings/{sourceId}', [\App\Http\Controllers\API\Reports\ReportController::class, 'getEarningsBySource']);
+        Route::get('/earnings/{typeId}', [\App\Http\Controllers\API\Reports\ReportController::class, 'getEarningsByType']);
+        Route::get('/earnings/{typeId}/{sourceId}', [\App\Http\Controllers\API\Reports\ReportController::class, 'getEarningsByTypeAndSource']);
+        Route::get('/spendings/{fromDate}/{toDate}', [\App\Http\Controllers\API\Reports\ReportController::class, 'getSpendingsByDate']);
+        Route::get('/spendings/{categoryId}', [\App\Http\Controllers\API\Reports\ReportController::class, 'getSpendingsByCategory']);
+        Route::get('/spendings/{typeId}', [\App\Http\Controllers\API\Reports\ReportController::class, 'getSpendingsByType']);
+        Route::get('/spendings/{typeId}/{categoryId}', [\App\Http\Controllers\API\Reports\ReportController::class, 'getSpendingsByTypeAndCategory']);
+        Route::get('/spendings/{tagId}', [\App\Http\Controllers\API\Reports\ReportController::class, 'getSpendingsByTag']);
+        Route::get('/spendings/{tagId}/{categoryId}', [\App\Http\Controllers\API\Reports\ReportController::class, 'getSpendingsByTagAndCategory']);
+        Route::get('/spendings/{tagId}/{typeId}', [\App\Http\Controllers\API\Reports\ReportController::class, 'getSpendingsByTagAndType']);
+        Route::get('/spendings/{tagId}/{typeId}/{categoryId}', [\App\Http\Controllers\API\Reports\ReportController::class, 'getSpendingsByTagAndTypeAndCategory']);
+    });
+
 });
 
 
 
-Route::group([
 
-    'middleware' => 'api',
-    'prefix' => 'auth'
-
-], function ($router) {
-
-    Route::post('login', 'AuthController@login');
-    Route::post('logout', 'AuthController@logout');
-    Route::post('refresh', 'AuthController@refresh');
-    Route::post('me', 'AuthController@me');
-
-});
 
