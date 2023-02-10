@@ -14,11 +14,7 @@ return [
     */
 
     'defaults' => [
-<<<<<<< HEAD
-        'guard' => 'web',
-=======
         'guard' => 'api',
->>>>>>> develop
         'passwords' => 'users',
     ],
 
@@ -44,13 +40,12 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
-<<<<<<< HEAD
-=======
+
         'api' => [
             'driver' => 'jwt',
             'provider' => 'users',
         ],
->>>>>>> develop
+
     ],
 
     /*
