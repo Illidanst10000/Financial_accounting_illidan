@@ -16,7 +16,7 @@ class AuthController extends Controller
     public function __invoke(LoginRequest $request)
     {
         $data = $request->validated();
-        dd($data);
+
         if ((!auth()->attempt($data))) {
             return response()->json([
                 'message' => 'The given data was invalid',
@@ -25,7 +25,6 @@ class AuthController extends Controller
         }
 
         $user = User::where('email', '=', $data['email']);
-        dd($user->createToken('auth-token'));
         $authToken = $user->createToken('auth-token')->plainToText();
 
         return response()->json([

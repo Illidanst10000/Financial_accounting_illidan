@@ -12,8 +12,32 @@ use App\Models\UserBalance;
 use App\Models\UserEarning;
 use Illuminate\Support\Facades\DB;
 
+
+/**
+ * @OA\Tag(
+ *     name="Balances",
+ * )
+ */
+
 class IndexController extends Controller
 {
+    /**
+     * @OA\Get(
+     *     path="/balances",
+     *     operationId="userBalance",
+     *     tags={"Balances"},
+     *     summary="Get user balance",
+     *     description="Get balance",
+     *     @OA\Response(
+     *         response="200",
+     *         description="Everything is fine",
+     *
+     *     @OA\JsonContent()
+     *     ),
+     * )
+     *
+     */
+
     public function __invoke()
     {
         $userId = auth()->user()->id;
@@ -27,10 +51,12 @@ class IndexController extends Controller
 
         foreach ($types as $type_id => $type)
         {
-                    $balances[$type_id]->type_id = $type;
+
+            $balances[$type_id]->type_id = $type;
         }
 
-        return response()->json($balances);
+        return response()->json($balances, 200);
+
     }
 
 }

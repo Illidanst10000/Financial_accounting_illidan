@@ -10,8 +10,42 @@ use App\Models\Tag;
 use App\Models\Type;
 use Illuminate\Support\Facades\DB;
 
+/**
+ * @OA\Tag(
+ *     name="Spendings",
+ * )
+ */
+
 class DeleteController extends Controller
 {
+    /**
+     * @OA\Delete (
+     * path="/spednings/{id}",
+     * operationId="spedningDelete",
+     * summary="Delete Spending",
+     * tags={"Spendings"},
+     * description="Delete spedning by ID",
+     *
+     *     @OA\Parameter (
+     *          name="id",
+     *          in="path",
+     *          description="Spending ID",
+     *          required=true,
+     *            @OA\Schema(
+     *               type="integer",
+     *               required={"id"},
+     *        ),
+     *     ),
+     *      @OA\Response(
+     *          response=204,
+     *          description="Deleted Successfully",
+     *          @OA\JsonContent()
+     *       ),
+     * )
+     *
+     *
+     */
+
     public function __invoke(Spending $spending)
     {
         try {
@@ -32,6 +66,7 @@ class DeleteController extends Controller
             DB::rollBack();
             abort(500);
         }
-        return response(200);
+
+        return response(204);
     }
 }

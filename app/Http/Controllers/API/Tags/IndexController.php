@@ -9,8 +9,32 @@ use App\Models\Tag;
 use App\Models\Type;
 use Illuminate\Support\Facades\DB;
 
+/**
+ * @OA\Tag(
+ *     name="Tags",
+ * )
+ */
+
 class IndexController extends Controller
 {
+    /**
+     * @OA\Get(
+     *     path="/tags",
+     *     operationId="tagsList",
+     *     tags={"Tags"},
+     *     summary="Get list of tags",
+     *     description="Get tags",
+     *     @OA\Response(
+     *         response="200",
+     *         description="Everything is fine",
+     *
+     *     @OA\JsonContent()
+     *     ),
+     * )
+     *
+     */
+
+
     public function __invoke()
     {
         $userId = auth()->user()->id;
@@ -20,6 +44,7 @@ class IndexController extends Controller
             ->where('user_id', '=', $userId)
             ->get();
 
-        return response()->json($tags);
+        return response()->json($tags, 200);
+
     }
 }

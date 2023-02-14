@@ -26,10 +26,10 @@ class UpdateRequest extends FormRequest
         return [
             'amount' => 'nullable|integer',
             'date' => 'nullable|string',
-            'category_id' => 'nullable|string|exists:categories,title',
+            'category_id' => 'nullable|integer|exists:categories,id',
             'tag_ids' => 'nullable|array',
-            'tag_ids.*' => 'nullable|string|exists:tags,title',
-            'type_id' => 'nullable|string',
+            'tag_ids.*' => 'nullable|integer|exists:tags,id',
+            'type_id' => 'nullable|integer',
             'description' => 'nullable|string',
         ];
     }

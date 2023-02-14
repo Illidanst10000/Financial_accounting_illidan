@@ -9,8 +9,40 @@ use App\Models\Tag;
 use App\Models\Type;
 use Illuminate\Support\Facades\DB;
 
+/**
+ * @OA\Tag(
+ *     name="Spendings",
+ * )
+ */
+
 class ShowController extends Controller
 {
+    /**
+     * @OA\Get(
+     *     path="/tags/{id}",
+     *     summary="Get tag by id",
+     *     tags={"Tags"},
+     *     description="Get tag by id",
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         description="Tag id",
+     *         required=true,
+     *              @OA\Schema(
+     *               type="integer",
+     *               required={"id"},
+     *        ),
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="successful operation",
+     *         @OA\JsonContent()
+     *     ),
+     * )
+     *
+     *
+     */
+
     public function __invoke(Tag $tag)
     {
         $userId = auth()->user()->id;
@@ -21,6 +53,7 @@ class ShowController extends Controller
             ->where('tag_id', '=', $tag->id)
             ->get();
 
-        return response()->json($tag);
+        return response()->json($tag, 200);
+
     }
 }

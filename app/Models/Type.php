@@ -4,7 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
+
+/**
+ * @OA\Schema(type="object"),
+ */
+
 
 class Type extends Model
 {
@@ -17,7 +21,6 @@ class Type extends Model
 
     protected $table = 'types';
     protected $guarded = false;
-
 
     public static function getTypes()
     {

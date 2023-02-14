@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API\Spendings;
 
 use App\Http\Controllers\Controller;
+
 use App\Http\Requests\API\Spendings\UpdateRequest;
 use App\Models\Category;
 use App\Models\Source;
@@ -13,6 +14,47 @@ use Illuminate\Support\Facades\DB;
 
 class UpdateController extends Controller
 {
+
+    /**
+     * @OA\PATCH (
+     * path="/spendings/{id}",
+     * operationId="spendingUpdate",
+     * summary="Update Spending",
+     * tags={"Spendings"},
+     * description="Update Spending by ID",
+     *     @OA\Parameter (
+     *          name="id",
+     *          in="path",
+     *          description="Spending ID",
+     *          required=true,
+     *            @OA\Schema(
+     *               type="integer",
+     *               required={"id"},
+     *        ),
+     *     ),
+     *     @OA\RequestBody(
+     *            @OA\MediaType(
+     *            mediaType="multipart/form-data",
+     *            @OA\Schema(
+     *               type="object",
+     *
+     *               @OA\Property(property="amount", type="integer", example="100"),
+     *               @OA\Property(property="date", type="date", example="2023-01-28"),
+     *               @OA\Property(property="category_id", type="id", example="1"),
+     *               @OA\Property(property="type_id", type="id", example="1"),
+     *               @OA\Property(property="tag_ids", type="array", @OA\Items(), example="[""McDonalds"", ""BurgerKing"", ""KFC""]"),
+     *               @OA\Property(property="description", type="string", example="Example description"),
+     *            ),
+     *        ),
+     *    ),
+     *      @OA\Response(
+     *          response=201,
+     *          description="Updated Successfully",
+     *          @OA\JsonContent()
+     *       ),
+     * )
+     */
+
     public function __invoke(UpdateRequest $request, Spending $spending)
     {
 
@@ -23,29 +65,9 @@ class UpdateController extends Controller
 
             $userId = auth()->user()->id;
 
-            if (isset($data['category_id']))
-            {
-                $category_id = Category::where('title', $data['category_id'])->first()->id;
-                $data['category_id'] = $category_id;
-            }
-
-            if (isset($data['tag_ids']))
-            {
-                $tags = $data['tag_ids'];
+            if (isset($data['tag_ids'])) {
+                $tagIds = $data['tag_ids'];
                 unset($data['tag_ids']);
-
-                foreach ($tags as $tag_num => $tag)
-                {
-                    $tag_id = Tag::where('title', $tag)->first()->id;
-                    $tags[$tag_num] = $tag_id;
-                }
-            }
-
-            if (isset($data['type_id']))
-            {
-                $types = Type::getTypes();
-                $types = array_flip($types);
-                $data['type_id'] = $types[$data['type_id']];
             }
 
             $spending->update($data);
@@ -67,6 +89,6 @@ class UpdateController extends Controller
             abort(500);
         }
 
-        return response($spending);
+        return response($spending, 201);
     }
 }

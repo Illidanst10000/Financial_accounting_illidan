@@ -31,3 +31,4 @@ CRUD for
 - Spendings
 - Tags
 - Transfers
+

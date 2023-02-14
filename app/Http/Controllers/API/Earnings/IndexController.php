@@ -11,8 +11,32 @@ use App\Models\Type;
 use App\Models\UserEarning;
 use Illuminate\Support\Facades\DB;
 
+
+/**
+ * @OA\Tag(
+ *     name="Earnings",
+ * )
+ */
+
 class IndexController extends Controller
 {
+    /**
+     * @OA\Get(
+     *     path="/earnings",
+     *     operationId="earningsList",
+     *     tags={"Earnings"},
+     *     summary="Get list of earnings",
+     *     description="Get earnings",
+     *     @OA\Response(
+     *         response="200",
+     *         description="Everything is fine",
+     *
+     *     @OA\JsonContent()
+     *     ),
+     * )
+     *
+     */
+
     public function __invoke()
     {
        $userId = auth()->user()->id;
@@ -22,7 +46,8 @@ class IndexController extends Controller
            ->where('user_id', '=', $userId)
            ->get();
 
-        return response()->json($earnings);
+        return response()->json($earnings, 200);
+
     }
 
     // TODO have to make api documentation

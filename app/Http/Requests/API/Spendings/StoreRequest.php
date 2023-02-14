@@ -26,10 +26,10 @@ class StoreRequest extends FormRequest
         return [
               'amount' => 'required|integer',
               'date' => 'required|string',
-              'category_id' => 'required|string|exists:categories,title',
-              'tag_ids' => 'required|string',
-              'tag_ids.*' => 'required|string|exists:tags,title',
-              'type_id' => 'required|string',
+              'category_id' => 'required|integer|exists:categories,id',
+              'tag_ids' => 'required|integer',
+              'tag_ids.*' => 'required|integer|exists:tags,id',
+              'type_id' => 'required|integer',
               'description' => 'nullable|string',
         ];
     }

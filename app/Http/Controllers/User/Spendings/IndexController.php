@@ -8,7 +8,6 @@ class IndexController extends BaseController
 {
     public function __invoke()
     {
-
         $userId = auth()->user()->id;
 
         $spendings = DB::table('spendings')

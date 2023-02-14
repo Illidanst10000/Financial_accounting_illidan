@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\API\Earnings;
+namespace App\Http\Requests\API\Users;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreRequest extends FormRequest
+class LoginRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,17 +22,13 @@ class StoreRequest extends FormRequest
      * @return array<string, mixed>
      */
 
-
     // TODO have to add more rules for work without errors (255 symbols, etc)
 
     public function rules()
     {
         return [
-            'amount' => 'required|integer',
-            'date' => 'required|string',
-            'source_id' => 'required|integer|exists:sources,id',
-            'type_id' => 'required|integer',
-            'description' => 'nullable|string',
+            'email' => 'required|email|',
+            'password' => 'required',
         ];
     }
 }

@@ -4,10 +4,20 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
+
+/**
+ * @OA\Schema(type="object"),
+ */
 
 class Tag extends Model
 {
+    /**
+     *  @OA\Property(
+     *      property="title",
+     *      type="string",
+     *  )
+     */
+
     use HasFactory;
 
 

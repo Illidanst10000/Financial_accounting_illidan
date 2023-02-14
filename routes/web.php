@@ -3,8 +3,6 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,6 +20,7 @@ use Illuminate\Support\Facades\Route;
     Route::get('/', App\Http\Controllers\Main\IndexController::class)->name('main.index');
 
     Route::group(['prefix' => 'tags'], function () {
+
         Route::get('/', \App\Http\Controllers\User\Tags\IndexController::class)->name('user.tags.index');
         Route::get('/create', \App\Http\Controllers\User\Tags\CreateController::class)->name('user.tags.create');
         Route::post('/', \App\Http\Controllers\User\Tags\StoreController::class)->name('user.tags.store');
@@ -121,6 +120,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function 
         Route::patch('/{user}', \App\Http\Controllers\Admin\Users\UpdateController::class)->name('admin.users.update');
         Route::delete('/{user}', \App\Http\Controllers\Admin\Users\DeleteController::class)->name('admin.users.delete');
     });
+
 });
 
 Auth::routes();

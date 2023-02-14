@@ -1,0 +1,864 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Finincial accounting API documentation",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://127.0.0.1:8000/api"
+        }
+    ],
+    "paths": {
+        "/balances": {
+            "get": {
+                "tags": [
+                    "Balances"
+                ],
+                "summary": "Get user balance",
+                "description": "Get balance",
+                "operationId": "userBalance",
+                "responses": {
+                    "200": {
+                        "description": "Everything is fine",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/earnings/{id}": {
+            "get": {
+                "tags": [
+                    "Earnings"
+                ],
+                "summary": "Get earning by id",
+                "description": "Get earning by id",
+                "operationId": "b09470a7be14a4dc66f5cef317e2ca30",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Earning id",
+                        "required": true,
+                        "schema": {
+                            "required": [
+                                "id"
+                            ],
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Earnings"
+                ],
+                "summary": "Delete Earning",
+                "description": "Delete earning by ID",
+                "operationId": "earningDelete",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Earning ID",
+                        "required": true,
+                        "schema": {
+                            "required": [
+                                "id"
+                            ],
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Deleted Successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "Earnings"
+                ],
+                "summary": "Update Earning",
+                "description": "Update Earning by ID",
+                "operationId": "earningUpdate",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Earning ID",
+                        "required": true,
+                        "schema": {
+                            "required": [
+                                "id"
+                            ],
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "amount": {
+                                        "type": "integer",
+                                        "example": "100"
+                                    },
+                                    "date": {
+                                        "type": "string",
+                                        "format": "date",
+                                        "example": "2023-01-28"
+                                    },
+                                    "source_id": {
+                                        "type": "id",
+                                        "example": "1"
+                                    },
+                                    "type_id": {
+                                        "type": "id",
+                                        "example": "1"
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "example": "Example description"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Updated Successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/earnings": {
+            "post": {
+                "tags": [
+                    "Earnings"
+                ],
+                "summary": "Create Earning",
+                "description": "Create Earning",
+                "operationId": "earningCreate",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "amount",
+                                    "date",
+                                    "source_id",
+                                    "type_id"
+                                ],
+                                "properties": {
+                                    "amount": {
+                                        "type": "integer",
+                                        "example": "100"
+                                    },
+                                    "date": {
+                                        "type": "string",
+                                        "format": "date",
+                                        "example": "2023-01-28"
+                                    },
+                                    "source_id": {
+                                        "type": "id",
+                                        "example": "1"
+                                    },
+                                    "type_id": {
+                                        "type": "id",
+                                        "example": "1"
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "example": "Example description"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created Successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/spednings/{id}": {
+            "delete": {
+                "tags": [
+                    "Spendings"
+                ],
+                "summary": "Delete Spending",
+                "description": "Delete spedning by ID",
+                "operationId": "spedningDelete",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Spending ID",
+                        "required": true,
+                        "schema": {
+                            "required": [
+                                "id"
+                            ],
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Deleted Successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/spendings": {
+            "get": {
+                "tags": [
+                    "Spendings"
+                ],
+                "summary": "Get list of spendings",
+                "description": "Get spendings",
+                "operationId": "spendingsList",
+                "responses": {
+                    "200": {
+                        "description": "Everything is fine",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Spendings"
+                ],
+                "summary": "Create Spending",
+                "description": "Create Spending",
+                "operationId": "spendingCreate",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "amount",
+                                    "date",
+                                    "source_id",
+                                    "type_id"
+                                ],
+                                "properties": {
+                                    "amount": {
+                                        "type": "integer",
+                                        "example": "100"
+                                    },
+                                    "date": {
+                                        "type": "string",
+                                        "format": "date",
+                                        "example": "2023-01-28"
+                                    },
+                                    "category_id": {
+                                        "type": "id",
+                                        "example": "1"
+                                    },
+                                    "type_id": {
+                                        "type": "id",
+                                        "example": "1"
+                                    },
+                                    "tag_ids": {
+                                        "type": "array",
+                                        "items": {},
+                                        "example": "[\"McDonalds\", \"BurgerKing\", \"KFC\"]"
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "example": "Example description"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created Successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/spendings/{id}": {
+            "get": {
+                "tags": [
+                    "Spendings"
+                ],
+                "summary": "Get spending by id",
+                "description": "Get spending by id",
+                "operationId": "ea12106d237d98fc92faf3433dc6de85",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Spending id",
+                        "required": true,
+                        "schema": {
+                            "required": [
+                                "id"
+                            ],
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "Spendings"
+                ],
+                "summary": "Update Spending",
+                "description": "Update Spending by ID",
+                "operationId": "spendingUpdate",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Spending ID",
+                        "required": true,
+                        "schema": {
+                            "required": [
+                                "id"
+                            ],
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "amount": {
+                                        "type": "integer",
+                                        "example": "100"
+                                    },
+                                    "date": {
+                                        "type": "string",
+                                        "format": "date",
+                                        "example": "2023-01-28"
+                                    },
+                                    "category_id": {
+                                        "type": "id",
+                                        "example": "1"
+                                    },
+                                    "type_id": {
+                                        "type": "id",
+                                        "example": "1"
+                                    },
+                                    "tag_ids": {
+                                        "type": "array",
+                                        "items": {},
+                                        "example": "[\"McDonalds\", \"BurgerKing\", \"KFC\"]"
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "example": "Example description"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Updated Successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/tags/{id}": {
+            "get": {
+                "tags": [
+                    "Tags"
+                ],
+                "summary": "Get tag by id",
+                "description": "Get tag by id",
+                "operationId": "d3d2e4eac468da54d8ae14faee889bb5",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Tag id",
+                        "required": true,
+                        "schema": {
+                            "required": [
+                                "id"
+                            ],
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Tags"
+                ],
+                "summary": "Delete Tag",
+                "description": "Delete tag by ID",
+                "operationId": "tagDelete",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Tag ID",
+                        "required": true,
+                        "schema": {
+                            "required": [
+                                "id"
+                            ],
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Deleted Successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "Tags"
+                ],
+                "summary": "Update Tag",
+                "description": "Update Tag by ID",
+                "operationId": "tagUpdate",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Tag ID",
+                        "required": true,
+                        "schema": {
+                            "required": [
+                                "id"
+                            ],
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "title": {
+                                        "type": "string",
+                                        "example": "McDonalds"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Updated Successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/tags": {
+            "get": {
+                "tags": [
+                    "Tags"
+                ],
+                "summary": "Get list of tags",
+                "description": "Get tags",
+                "operationId": "tagsList",
+                "responses": {
+                    "200": {
+                        "description": "Everything is fine",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Tags"
+                ],
+                "summary": "Create tag",
+                "description": "Create tag",
+                "operationId": "tagCreate",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "title"
+                                ],
+                                "properties": {
+                                    "title": {
+                                        "type": "string",
+                                        "example": "McDonalds"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created Successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/transfers": {
+            "post": {
+                "tags": [
+                    "Transfers"
+                ],
+                "summary": "Create transfer",
+                "description": "Create transfer",
+                "operationId": "transferCreate",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "amount",
+                                    "fromType_id",
+                                    "toType_id"
+                                ],
+                                "properties": {
+                                    "amount": {
+                                        "type": "integer",
+                                        "example": "100"
+                                    },
+                                    "fromType_id": {
+                                        "type": "integer",
+                                        "example": "0"
+                                    },
+                                    "toType_id": {
+                                        "type": "integer",
+                                        "example": "1"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created Successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Category": {
+                "properties": {
+                    "title": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "Earning": {
+                "properties": {
+                    "amount": {
+                        "type": "integer"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "date": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "source_id": {
+                        "type": "id"
+                    },
+                    "type_id": {
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            },
+            "Source": {
+                "properties": {
+                    "title": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "Spending": {
+                "properties": {
+                    "amount": {
+                        "type": "integer"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "date": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "category_id": {
+                        "type": "id"
+                    },
+                    "type_id": {
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            },
+            "SpendingTag": {
+                "properties": {
+                    "spending_id": {
+                        "type": "id"
+                    },
+                    "tag_id": {
+                        "type": "id"
+                    }
+                },
+                "type": "object"
+            },
+            "Tag": {
+                "properties": {
+                    "title": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "Type": {
+                "type": "object"
+            },
+            "User": {
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "enum": [
+                            0
+                        ]
+                    },
+                    "email": {
+                        "type": "email",
+                        "enum": [
+                            0
+                        ]
+                    },
+                    "password": {
+                        "type": "password",
+                        "enum": [
+                            0
+                        ]
+                    },
+                    "role": {
+                        "type": "integer",
+                        "enum": [
+                            0
+                        ]
+                    }
+                },
+                "type": "object"
+            },
+            "UserBalance": {
+                "properties": {
+                    "user_id": {
+                        "type": "id"
+                    },
+                    "balance": {
+                        "type": "integer"
+                    },
+                    "type_id": {
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            },
+            "UserEarning": {
+                "properties": {
+                    "user_id": {
+                        "type": "id"
+                    },
+                    "earning_id": {
+                        "type": "id"
+                    }
+                },
+                "type": "object"
+            },
+            "UserSpending": {
+                "properties": {
+                    "user_id": {
+                        "type": "id"
+                    },
+                    "spending_id": {
+                        "type": "id"
+                    }
+                },
+                "type": "object"
+            },
+            "UserTag": {
+                "properties": {
+                    "user_id": {
+                        "type": "id"
+                    },
+                    "tag_id": {
+                        "type": "id"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Balances"
+        },
+        {
+            "name": "Earnings"
+        },
+        {
+            "name": "Earnings"
+        },
+        {
+            "name": "Earnings"
+        },
+        {
+            "name": "Earnings"
+        },
+        {
+            "name": "Earnings"
+        },
+        {
+            "name": "Spendings"
+        },
+        {
+            "name": "Spendings"
+        },
+        {
+            "name": "Spendings"
+        },
+        {
+            "name": "Spendings"
+        },
+        {
+            "name": "Tags"
+        },
+        {
+            "name": "Tags"
+        },
+        {
+            "name": "Spendings"
+        },
+        {
+            "name": "Tags"
+        },
+        {
+            "name": "Transfers"
+        }
+    ]
+}

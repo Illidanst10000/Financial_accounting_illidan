@@ -27,9 +27,9 @@ Route::group(['middleware' => 'api'], function () {
 
     Route::group(['prefix' => 'earnings'], function () {
         Route::get('/', \App\Http\Controllers\API\Earnings\IndexController::class)->name('api.earnings.index');
+        Route::get('/create', \App\Http\Controllers\API\Earnings\CreateController::class)->name('api.earnings.create');
         Route::post('/', \App\Http\Controllers\API\Earnings\StoreController::class)->name('api.earnings.store');
         Route::get('/{earning}', \App\Http\Controllers\API\Earnings\ShowController::class)->name('api.earnings.show');
-        Route::patch('/{earning}', \App\Http\Controllers\API\Earnings\UpdateController::class)->name('api.earnings.update');
         Route::delete('/{earning}', \App\Http\Controllers\API\Earnings\DeleteController::class)->name('api.earnings.delete');
     });
 
@@ -56,8 +56,21 @@ Route::group(['middleware' => 'api'], function () {
     Route::group(['prefix' => 'balances'], function () {
         Route::get('/', \App\Http\Controllers\API\Balances\IndexController::class)->name('api.balances.store');
     });
+
+    Route::group(['prefix' => 'reports'], function () {
+        Route::get('/earnings/{fromDate}/{toDate}', [\App\Http\Controllers\API\Reports\ReportController::class, 'getEarningsByDate']);
+        Route::get('/earnings/{sourceId}', [\App\Http\Controllers\API\Reports\ReportController::class, 'getEarningsBySource']);
+        Route::get('/earnings/{typeId}', [\App\Http\Controllers\API\Reports\ReportController::class, 'getEarningsByType']);
+        Route::get('/earnings/{typeId}/{sourceId}', [\App\Http\Controllers\API\Reports\ReportController::class, 'getEarningsByTypeAndSource']);
+        Route::get('/spendings/{fromDate}/{toDate}', [\App\Http\Controllers\API\Reports\ReportController::class, 'getSpendingsByDate']);
+        Route::get('/spendings/{categoryId}', [\App\Http\Controllers\API\Reports\ReportController::class, 'getSpendingsByCategory']);
+        Route::get('/spendings/{typeId}', [\App\Http\Controllers\API\Reports\ReportController::class, 'getSpendingsByType']);
+        Route::get('/spendings/{typeId}/{categoryId}', [\App\Http\Controllers\API\Reports\ReportController::class, 'getSpendingsByTypeAndCategory']);
+        Route::get('/spendings/{tagId}', [\App\Http\Controllers\API\Reports\ReportController::class, 'getSpendingsByTag']);
+        Route::get('/spendings/{tagId}/{categoryId}', [\App\Http\Controllers\API\Reports\ReportController::class, 'getSpendingsByTagAndCategory']);
+        Route::get('/spendings/{tagId}/{typeId}', [\App\Http\Controllers\API\Reports\ReportController::class, 'getSpendingsByTagAndType']);
+        Route::get('/spendings/{tagId}/{typeId}/{categoryId}', [\App\Http\Controllers\API\Reports\ReportController::class, 'getSpendingsByTagAndTypeAndCategory']);
+    });
+
 });
-
-
-
 
