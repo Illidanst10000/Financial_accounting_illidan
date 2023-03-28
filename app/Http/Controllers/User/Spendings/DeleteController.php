@@ -14,12 +14,6 @@ class DeleteController extends BaseController
 
             $spending->delete();
 
-            $userId = auth()->user()->id;
-            DB::table('user_balances')
-                ->where('type_id', '=', $spending['type_id'])
-                ->where('user_id', '=', $userId)
-                ->increment('balance', $spending['amount']);
-
             DB::commit();
         }
         catch (\Exception $exception) {

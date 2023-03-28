@@ -24,13 +24,6 @@ class StoreController extends Controller
 
             $user = User::firstOrCreate(['email' => $data['email']], $data);
 
-            $types = Type::getTypes();
-
-            foreach ($types as $id => $type) {
-                UserBalance::firstOrcreate(['user_id' => $user->id, 'balance' => 0, 'type_id' => $id]);
-            }
-
-
             DB::commit();
         }
         catch (\Exception $exception) {

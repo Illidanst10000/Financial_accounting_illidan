@@ -9,7 +9,7 @@ class CreateController extends Controller
 {
     public function __invoke()
     {
-       $types = Type::getTypes();
+        $types = Type::all();
         return view('user.transfers.create', compact('types'));
     }
 }

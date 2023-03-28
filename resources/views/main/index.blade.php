@@ -26,7 +26,7 @@
 
                         <div class="info-box-content">
                             <span class="info-box-text text-bold">Debit</span>
-                            <span class="info-box-number">{{$balances['Debit']}}</span>
+                            <span class="info-box-number"></span>
                         </div>
                         <!-- /.info-box-content -->
                     </div>
@@ -39,7 +39,7 @@
 
                         <div class="info-box-content">
                             <span class="info-box-text text-bold">Credit</span>
-                            <span class="info-box-number">{{$balances['Credit']}}</span>
+                            <span class="info-box-number"></span>
                         </div>
                         <!-- /.info-box-content -->
                     </div>
@@ -56,7 +56,7 @@
 
                         <div class="info-box-content">
                             <span class="info-box-text text-bold">Cash</span>
-                            <span class="info-box-number">{{$balances['Cash']}}</span>
+                            <span class="info-box-number"></span>
                         </div>
                         <!-- /.info-box-content -->
                     </div>
@@ -69,7 +69,7 @@
 
                         <div class="info-box-content">
                             <span class="info-box-text text-bold">Debt</span>
-                            <span class="info-box-number">{{$balances['Debt']}}</span>
+                            <span class="info-box-number"></span>
                         </div>
                         <!-- /.info-box-content -->
                     </div>

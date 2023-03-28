@@ -41,21 +41,10 @@ class IndexController extends Controller
     public function __invoke()
     {
         $userId = auth()->user()->id;
-        $types = Type::getTypes();
-
-        $balances = DB::table('user_balances')
-            ->where('user_id', '=', $userId)
-            ->get()
-            ->toArray();
+        $types = Type::all();
 
 
-        foreach ($types as $type_id => $type)
-        {
-
-            $balances[$type_id]->type_id = $type;
-        }
-
-        return response()->json($balances, 200);
+        return response()->json(1);
 
     }
 

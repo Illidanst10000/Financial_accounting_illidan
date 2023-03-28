@@ -19,11 +19,6 @@ class StoreController extends Controller
 
             $userId = auth()->user()->id;
 
-            $userBalance = new UserBalance();
-
-            $userBalance->decrementBalance($data['fromType_id'], $userId, $data['amount']);
-            $userBalance->incrementBalance($data['toType_id'], $userId, $data['amount']);
-
             DB::commit();
         }
     catch (\Exception $exception) {

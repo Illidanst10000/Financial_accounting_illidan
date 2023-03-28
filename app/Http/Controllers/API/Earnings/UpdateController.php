@@ -65,13 +65,7 @@ class UpdateController extends Controller
         try {
             DB::beginTransaction();
 
-            $userId = auth()->user()->id;
             $earning->update($data);
-
-            DB::table('user_balances')
-                ->where('type_id', '=', $earning['type_id'])
-                ->where('user_id', '=', $userId)
-                ->increment('balance', $data['amount'] - $earning['amount']);
 
             DB::commit();
 

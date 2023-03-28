@@ -23,4 +23,8 @@ class Source extends Model
 
     protected $table = 'sources';
     protected $guarded = false;
+
+    public function userSources() {
+        return $this->belongsToMany(User::class, 'user_sources');
+    }
 }

@@ -37,7 +37,7 @@
                                 <div class="form-group">
                                     <label>Amount:</label>
                                     <input type="text" class="form-control" placeholder="Enter amount" name="amount">
-                                    @error('title')
+                                    @error('amount')
                                     <div class="text-danger mt-2">You have to fill this input</div>
                                     @enderror
                                 </div>
@@ -73,8 +73,8 @@
                                 <div class="form-group">
                                     <label>Type</label>
                                     <select class="form-control" name="type_id">
-                                        @foreach($types as $id => $type)
-                                            <option value="{{ $id }}">{{ $type}}</option>
+                                        @foreach($types as $type)
+                                            <option value="{{ $type->id }}">{{ $type->title}}</option>
                                         @endforeach
                                     </select>
                                 </div>

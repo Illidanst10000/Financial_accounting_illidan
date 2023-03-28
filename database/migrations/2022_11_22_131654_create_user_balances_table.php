@@ -15,11 +15,9 @@ return new class extends Migration
     {
         Schema::create('user_balances', function (Blueprint $table) {
             $table->id();
-
             $table->foreignId('user_id')->constrained();
             $table->integer('balance');
             $table->unsignedSmallInteger('type_id');
-
             $table->softDeletes();
             $table->timestamps();
         });

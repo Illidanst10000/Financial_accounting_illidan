@@ -80,9 +80,8 @@
                                 <div class="form-group">
                                     <label>Type</label>
                                     <select class="form-control" name="type_id">
-                                        @foreach($types as $id => $type)
-                                            <option
-                                                value="{{ $id }}" {{$id == $earning->type_id ? ' selected' : ''}}>{{ $type }}</option>
+                                        @foreach($types as $type)
+                                            <option value="{{ $type->id }}" {{$type->id == $earning->type_id ? ' selected' : ''}}>{{ $type->title}}</option>
                                         @endforeach
                                     </select>
                                 </div>

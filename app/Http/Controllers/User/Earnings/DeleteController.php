@@ -19,12 +19,6 @@ class DeleteController extends Controller
 
             $earning->delete();
 
-            $userId = auth()->user()->id;
-            DB::table('user_balances')
-                ->where('type_id', '=', $earning['type_id'])
-                ->where('user_id', '=', $userId)
-                ->decrement('balance', $earning['amount']);
-
             DB::commit();
         }
         catch (\Exception $exception) {

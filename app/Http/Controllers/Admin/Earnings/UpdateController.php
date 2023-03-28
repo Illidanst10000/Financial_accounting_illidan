@@ -21,12 +21,6 @@ class UpdateController extends Controller
 
             $earning->update($data);
 
-            $userId = auth()->user()->id;
-            DB::table('user_balances')
-                ->where('type_id', '=', $earning['type_id'])
-                ->where('user_id', '=', $userId)
-                ->increment('balance', $data['amount'] - $earning['amount']);
-
             DB::commit();
         }
         catch (\Exception $exception) {

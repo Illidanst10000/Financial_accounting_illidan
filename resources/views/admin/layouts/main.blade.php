@@ -39,17 +39,6 @@
         <!-- Left navbar links -->
 
 
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-            </li>
-            <li class="nav-item d-none d-sm-inline-block">
-                <a href="index3.html" class="nav-link">Home</a>
-            </li>
-            <li class="nav-item d-none d-sm-inline-block">
-                <a href="#" class="nav-link">Contact</a>
-            </li>
-        </ul>
 
 
         <div class="col-12 d-flex justify-content-between">
@@ -58,17 +47,26 @@
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="index3.html" class="nav-link">Home</a>
+                    <a href="{{route('admin.main.index')}}" class="nav-link">Home</a>
                 </li>
             </ul>
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <form action="{{route('logout')}}" method="POST">
-                        @csrf
-                        <input type="submit" value="Logout" class="btn btn-outline-primary">
-                    </form>
-                </li>
-            </ul>
+            <div class="d-flex">
+
+                    <ul class="navbar-nav mr-3">
+                        <form action="{{route('main.index')}}">
+                            <input type="submit" value="User Panel" class="btn btn-outline-light">
+                        </form>
+                    </ul>
+
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <form action="{{route('logout')}}" method="POST">
+                            @csrf
+                            <input type="submit" value="Logout" class="btn btn-outline-light">
+                        </form>
+                    </li>
+                </ul>
+            </div>
         </div>
 
         <!-- Right navbar links -->
@@ -197,7 +195,7 @@
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
-        <a href="index3.html" class="brand-link">
+        <a href="{{route('admin.main.index')}}" class="brand-link">
             <img src="{{asset('dist/img/AdminLTELogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
             <span class="brand-text font-weight-light">AdminLTE 3</span>
         </a>

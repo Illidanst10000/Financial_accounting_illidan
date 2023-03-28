@@ -12,15 +12,9 @@ class IndexController extends Controller
     public function __invoke()
     {
         $userId = auth()->user()->id;
-        $balances = UserBalance::all()->where('user_id', '=', $userId)->pluck('balance')->toArray();
-        $types = Type::getTypes();
 
-        foreach ($types as $id => $type) {
+        $types = Type::all();
 
-            $balances[$type] = $balances[$id];
-            unset($balances[$id]);
-        }
-
-        return view('main.index', compact('balances'));
+        return view('main.index');
     }
 }
