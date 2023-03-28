@@ -76,11 +76,6 @@ class UpdateController extends Controller
                 $spending->tags()->sync($tagIds);
             }
 
-            DB::table('user_balances')
-                ->where('type_id', '=', $spending['type_id'])
-                ->where('user_id', '=', $userId)
-                ->increment('balance', $data['amount'] - $spending['amount']);
-
             DB::commit();
 
         }

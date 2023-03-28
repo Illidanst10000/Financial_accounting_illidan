@@ -17,18 +17,14 @@ class StoreController extends Controller
     {
         $data = $request->validated();
 
-        $userId = auth()->user()->id;
+
 
         try {
             DB::beginTransaction();
 
+            $userId = auth()->user()->id;
             $earning = Earning::firstOrCreate($data);
             $earning->userEarnings()->attach($userId);
-
-            DB::table('user_balances')
-                ->where('type_id', '=', $earning['type_id'])
-                ->where('user_id', '=', $userId)
-                ->increment('balance', $earning['amount']);
 
             DB::commit();
 

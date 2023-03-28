@@ -53,6 +53,14 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{route('admin.types.index')}}" class="nav-link">
+                        <i class="nav-icon far fa-bookmark pr-2"></i>
+                        <p>
+                            Types
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{route('admin.earnings.index')}}" class="nav-link">
                         <i class="nav-icon far fa-arrow-alt-circle-up pr-2"></i>
                         <p>

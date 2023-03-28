@@ -26,11 +26,6 @@ class StoreController extends Controller
             $earning = Earning::firstOrCreate($data);
             $earning->userEarnings()->attach($userId);
 
-            DB::table('user_balances')
-                ->where('type_id', '=', $earning['type_id'])
-                ->where('user_id', '=', $userId)
-                ->increment('balance', $earning['amount']);
-
             DB::commit();
 
         }

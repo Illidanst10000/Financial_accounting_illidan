@@ -52,6 +52,30 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{route('user.types.index')}}" class="nav-link">
+                        <i class="nav-icon fab fa-buffer pr-2"></i>
+                        <p>
+                            Types
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{route('user.sources.index')}}" class="nav-link">
+                        <i class="nav-icon fab fa-buffer pr-2"></i>
+                        <p>
+                            Sources
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{route('user.categories.index')}}" class="nav-link">
+                        <i class="nav-icon fab fa-buffer pr-2"></i>
+                        <p>
+                            Categories
+                        </p>
+                    </a>
+                </li>
 
 
 

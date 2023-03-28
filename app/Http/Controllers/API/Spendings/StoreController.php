@@ -67,10 +67,6 @@ class StoreController extends Controller
             $userId = auth()->user()->id;
             $spending->userSpendings()->attach($userId);
 
-            DB::table('user_balances')
-                ->where('type_id', '=', $spending['type_id'])
-                ->where('user_id', '=', $userId)
-                ->decrement('balance', $spending['amount']);
 
             DB::commit();
 

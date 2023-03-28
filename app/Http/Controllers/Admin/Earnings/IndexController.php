@@ -14,7 +14,6 @@ class IndexController extends Controller
 {
     public function __invoke()
     {
-
         $userId = auth()->user()->id;
 
         $earnings = DB::table('earnings')
